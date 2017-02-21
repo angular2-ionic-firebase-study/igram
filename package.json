@@ -1,0 +1,17 @@
+{
+  "name": "igram",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular2",
+    "ionic",
+    "firebase",
+    "oauth"
+  ],
+  "author": "angular2-ionic-firebase-study",
+  "license": "MIT"
+}
