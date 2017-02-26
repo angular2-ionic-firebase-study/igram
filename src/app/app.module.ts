@@ -8,6 +8,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import {BrowserModule} from '@angular/platform-browser'
 import {AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
+import { AuthService } from '../providers/auth-service'
+
 const firebaseConfig = {
   apiKey: "AIzaSyAIWL1TSZzwnad43URMfB9xyaK8pLWfxIM",
   authDomain: "login-for-study.firebaseapp.com",
@@ -31,7 +33,7 @@ const firebaseAuthConfig = {
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
+    AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -42,6 +44,6 @@ const firebaseAuthConfig = {
     HomePage,
     TabsPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthService]
 })
 export class AppModule {}
