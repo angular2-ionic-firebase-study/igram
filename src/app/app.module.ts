@@ -5,6 +5,21 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import {BrowserModule} from '@angular/platform-browser'
+import {AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAIWL1TSZzwnad43URMfB9xyaK8pLWfxIM",
+  authDomain: "login-for-study.firebaseapp.com",
+  databaseURL: "https://login-for-study.firebaseio.com",
+  storageBucket: "login-for-study.appspot.com",
+  messagingSenderId: "116062770696"
+};
+
+const firebaseAuthConfig = {
+  provider: AuthProviders.Google,
+  method: AuthMethods.Redirect
+};
 
 @NgModule({
   declarations: [
@@ -15,6 +30,8 @@ import { TabsPage } from '../pages/tabs/tabs';
     TabsPage
   ],
   imports: [
+    BrowserModule,
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

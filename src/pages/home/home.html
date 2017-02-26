@@ -14,4 +14,8 @@
     Take a look at the <code>src/pages/</code> directory to add or change tabs,
     update any existing page or create new pages.
   </p>
+  <div> {{ (af.auth | async)?.uid }} </div>
+  <button (click)="google()">Google</button>
+
+
 </ion-content>
