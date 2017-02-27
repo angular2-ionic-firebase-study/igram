@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
+import {AngularFire} from "angularfire2";
+import {AuthService} from "../../providers/auth-service";
 
 @Component({
   selector: 'page-about',
@@ -8,8 +10,12 @@ import { NavController } from 'ionic-angular';
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController) {
+  user:string;
 
+  constructor(public navCtrl: NavController, public af: AngularFire, private _auth: AuthService) {
   }
 
+  ngOnInit() {
+    this.user = this._auth.email();
+  }
 }

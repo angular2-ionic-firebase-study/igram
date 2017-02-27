@@ -14,13 +14,19 @@
     Take a look at the <code>src/pages/</code> directory to add or change tabs,
     update any existing page or create new pages.
   </p>
+  <input type="text" [(ngModel)]="email" placeholder="email">
+  <input type="password" [(ngModel)]="password" placeholder="password">
+
+  <br/>
+  <br/>
+
   <button ion-button outline (click)="google()">Google</button>
   <button ion-button outline (click)="facebook()">facebook</button>
 
-  <ion-list>
-    <ion-item class="text" *ngFor="let item of items | async">
-      {{item.$value}}
-    </ion-item>
-  </ion-list>
+  <button ion-button outline (click)="signup()">Email Signup</button>
+  <button ion-button outline (click)="login()">Email Login</button>
+  <button ion-button outline (click)="logout()">logout</button>
+
+  <h3>{{user}}</h3>
 
 </ion-content>

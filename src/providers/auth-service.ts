@@ -16,6 +16,20 @@ export class AuthService {
     return this.authState !== null;
   }
 
+  signup(email: string, password: string) {
+    this.auth$.createUser({ email: email, password: password });
+  }
+
+  signInWithEmail(email: string, password: string): firebase.Promise<FirebaseAuthState> {
+    return this.auth$.login({
+      email: email,
+      password: password,
+    }, {
+        provider: AuthProviders.Password,
+        method: AuthMethods.Password,
+      });
+  }
+
   signInWithFacebook(): firebase.Promise<FirebaseAuthState> {
     return this.auth$.login({
       provider: AuthProviders.Facebook,
@@ -34,4 +48,20 @@ export class AuthService {
       return '';
     }
   }
+
+  email(): string {
+    if (this.authState != null) {
+
+      if(this.authState.facebook){
+        return this.authState.facebook.email;
+      } else if(this.authState.google){
+        return this.authState.google.email;
+      }
+
+    }
+
+    return '';
+
+  }
+
 }

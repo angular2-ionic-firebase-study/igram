@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {AngularFire, FirebaseListObservable} from "angularfire2";
+import {AngularFire, FirebaseListObservable, AuthMethods, AuthProviders} from "angularfire2";
 import { AuthService } from '../../providers/auth-service';
 
 @Component({
@@ -9,13 +9,35 @@ import { AuthService } from '../../providers/auth-service';
 })
 export class HomePage {
   items: FirebaseListObservable<any[]>;
+  user:string;
+  email:string;
+  password:string;
 
   constructor(public navCtrl: NavController, public af: AngularFire, private _auth: AuthService) {
-    this.items = af.database.list('/items');
+  }
+
+  ngOnInit() {
+    this.user = this._auth.email();
+  }
+
+  signup() {
+    const email = this.email;
+    const password = this.password;
+    this._auth.signup(email, password);
+  }
+
+  login() {
+    const email = this.email;
+    const password = this.password;
+
+    this._auth.signInWithEmail(email, password).then(() => this.onSignInSuccess());
   }
 
   google(){
-    this.af.auth.login();
+    this.af.auth.login({
+      provider: AuthProviders.Google,
+      method: AuthMethods.Popup
+    }).then(() => this.onSignInSuccess());
   }
 
   facebook(): void {
@@ -24,10 +46,10 @@ export class HomePage {
   }
 
   private onSignInSuccess(): void {
-    console.log("Facebook display name ",this._auth.displayName());
+    this.user = this._auth.email();
   }
 
-  logout() {
-    this.af.auth.logout();
+  logout(): void {
+    this._auth.signOut();
   }
 }

@@ -18,11 +18,6 @@ const firebaseConfig = {
   messagingSenderId: "116062770696"
 };
 
-const firebaseAuthConfig = {
-  provider: AuthProviders.Google,
-  method: AuthMethods.Redirect
-};
-
 @NgModule({
   declarations: [
     MyApp,
