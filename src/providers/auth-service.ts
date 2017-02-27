@@ -33,7 +33,7 @@ export class AuthService {
   signInWithFacebook(): firebase.Promise<FirebaseAuthState> {
     return this.auth$.login({
       provider: AuthProviders.Facebook,
-      method: AuthMethods.Popup
+      method: AuthMethods.Redirect
     });
   }
 
