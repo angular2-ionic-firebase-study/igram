@@ -1,0 +1,70 @@
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+import { AboutPage } from '../../pages/about/about';
+
+import { AuthService } from '../../providers/auth-service';
+import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 'angularfire2';
+
+/*
+  Generated class for the Login page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+*/
+@Component({
+  selector: 'page-login',
+  templateUrl: 'login.html'
+})
+export class LoginPage {
+  id : any;
+  pw : any;
+  items: FirebaseListObservable<any[]>;
+
+  constructor(public af: AngularFire, private _auth: AuthService, public navCtrl: NavController, public navParams: NavParams) {
+    // this.af.auth.subscribe(auth => console.log(auth));
+    this.items = af.database.list('/items');
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad LoginPage');
+  }
+
+  authLogin() {
+    this.af.auth.login({
+      email: this.id,
+      password: this.pw,
+    },
+    {
+      provider: AuthProviders.Password,
+      method: AuthMethods.Password,
+    }).then((success) => this.navigateAbout(success))
+    .catch((err) => console.log("login failed", err));
+
+    this.id = null;
+    this.pw = null;
+  }
+
+  signInWithFacebook(): void {
+    this._auth.signInWithFacebook()
+      .then((success) => this.navigateAbout(success));
+  }
+
+  signInWithGoogle(): void {
+    this._auth.signInWithGoogle()
+      .then(() => this.onSignInSuccessGoogle());
+  }
+
+  private onSignInSuccess(): void {
+    console.log("Facebook display name ",this._auth.displayName());
+  }
+
+  private onSignInSuccessGoogle(): void {
+    console.log("Google User name ",this._auth.displayName());
+  }
+
+  private navigateAbout(successData): void {
+    this.navCtrl.setRoot(AboutPage, {
+      auth : successData
+    });
+  }
+}

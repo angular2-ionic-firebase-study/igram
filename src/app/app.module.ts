@@ -5,6 +5,25 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { LoginPage } from '../pages/login/login';
+
+import { FormsModule } from '@angular/forms';
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { AuthService } from '../providers/auth-service';
+
+// Must export the config
+export const firebaseConfig = {
+  apiKey: 'AIzaSyArJZ75oF81Ezb3oimXuKb0GrIWhPTSj98',
+  authDomain: 'igram-f57b5.firebaseapp.com',
+  databaseURL: 'https://igram-f57b5.firebaseio.com/',
+  storageBucket: 'gs://igram-f57b5.appspot.com'
+  // messagingSenderId: '<your-messaging-sender-id>'
+};
+
+export const myFirebaseAuthConfig = {
+  provider: AuthProviders.Google,
+  method: AuthMethods.Redirect
+};
 
 @NgModule({
   declarations: [
@@ -12,10 +31,13 @@ import { TabsPage } from '../pages/tabs/tabs';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    LoginPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    FormsModule,
+    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -23,8 +45,9 @@ import { TabsPage } from '../pages/tabs/tabs';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    LoginPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthService]
 })
 export class AppModule {}
