@@ -51,17 +51,15 @@ export class AuthService {
 
   email(): string {
     if (this.authState != null) {
-
       if(this.authState.facebook){
         return this.authState.facebook.email;
       } else if(this.authState.google){
         return this.authState.google.email;
+      } else if(this.authState.auth){
+        return this.authState.auth.email;
       }
-
     }
-
     return '';
-
   }
 
 }
