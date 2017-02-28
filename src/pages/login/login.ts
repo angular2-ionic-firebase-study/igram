@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Nav, NavController, NavParams, Tabs } from 'ionic-angular';
+import { Nav, NavController, NavParams } from 'ionic-angular';
 import { AboutPage } from '../../pages/about/about';
 
 import { AuthService } from '../../providers/auth-service';
@@ -61,5 +61,6 @@ export class LoginPage {
     this.navCtrl.push(AboutPage, {
       auth : successData
     });
+    // this.navCtrl.parent.select(2);
   }
 }

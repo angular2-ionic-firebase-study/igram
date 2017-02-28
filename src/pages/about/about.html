@@ -12,10 +12,14 @@
     <ion-card-content>
       <ion-card-title>
         {{authorizedData.displayName}}
-        </ion-card-title>
+        <button ion-button (click)="signOut()" style="vertical-align: baseline;">
+          <ion-icon name="log-out"></ion-icon>
+        </button>
+      </ion-card-title>
       <p>
         Email : {{authorizedData.email}}
       </p>
     </ion-card-content>
   </ion-card>
+
 </ion-content>

@@ -14,8 +14,8 @@ export class TabsPage {
   // should be each tab's root Page
   tab1Root: any = HomePage;
   tab2Root: any = LoginPage;
-  tab3Root: any = AboutPage;
-  tab4Root: any = ContactPage;
+  tab3Root: any = ContactPage;
+  // tab3Root: any = AboutPage;
 
   constructor() {}
 }
