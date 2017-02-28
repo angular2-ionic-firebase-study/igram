@@ -4,7 +4,6 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 
 import { FormsModule } from '@angular/forms';
@@ -31,7 +30,6 @@ export const myFirebaseAuthConfig = {
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage,
     LoginPage
   ],
   imports: [
@@ -45,7 +43,6 @@ export const myFirebaseAuthConfig = {
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage,
     LoginPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthService]
