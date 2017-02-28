@@ -10,12 +10,6 @@ import {AngularFire} from "angularfire2";
 })
 export class ContactPage {
 
-  user:string;
-
   constructor(public navCtrl: NavController, public af: AngularFire, private _auth: AuthService) {
-  }
-
-  ngOnInit() {
-    this.user = this._auth.email();
   }
 }
