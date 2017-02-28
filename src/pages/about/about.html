@@ -7,5 +7,19 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>{{user}}</h3>
+  <ion-card *ngIf="authorizedData">
+    <img src="{{authorizedData.photoURL}}"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{authorizedData.displayName}}
+        <button ion-button (click)="signOut()" style="vertical-align: baseline;">
+          <ion-icon name="log-out"></ion-icon>
+        </button>
+      </ion-card-title>
+      <p>
+        Email : {{authorizedData.email}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

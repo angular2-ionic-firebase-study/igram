@@ -1,6 +1,16 @@
 import { Injectable } from '@angular/core';
+// import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+
 import { AuthProviders, AngularFireAuth, FirebaseAuthState, AuthMethods } from 'angularfire2';
 
+
+/*
+ Generated class for the AuthService provider.
+
+ See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+ for more info on providers and Angular 2 DI.
+ */
 @Injectable()
 export class AuthService {
   private authState: FirebaseAuthState;
@@ -16,24 +26,17 @@ export class AuthService {
     return this.authState !== null;
   }
 
-  signup(email: string, password: string) {
-    this.auth$.createUser({ email: email, password: password });
-  }
-
-  signInWithEmail(email: string, password: string): firebase.Promise<FirebaseAuthState> {
-    return this.auth$.login({
-      email: email,
-      password: password,
-    }, {
-        provider: AuthProviders.Password,
-        method: AuthMethods.Password,
-      });
-  }
-
   signInWithFacebook(): firebase.Promise<FirebaseAuthState> {
     return this.auth$.login({
       provider: AuthProviders.Facebook,
-      method: AuthMethods.Redirect
+      method: AuthMethods.Popup
+    });
+  }
+
+  signInWithGoogle(): firebase.Promise<FirebaseAuthState> {
+    return this.auth$.login({
+      provider: AuthProviders.Google,
+      method: AuthMethods.Popup
     });
   }
 
@@ -47,19 +50,6 @@ export class AuthService {
     } else {
       return '';
     }
-  }
-
-  email(): string {
-    if (this.authState != null) {
-      if(this.authState.facebook){
-        return this.authState.facebook.email;
-      } else if(this.authState.google){
-        return this.authState.google.email;
-      } else if(this.authState.auth){
-        return this.authState.auth.email;
-      }
-    }
-    return '';
   }
 
 }

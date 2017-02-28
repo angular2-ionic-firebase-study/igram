@@ -5,17 +5,24 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-import {BrowserModule} from '@angular/platform-browser'
-import {AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { LoginPage } from '../pages/login/login';
 
-import { AuthService } from '../providers/auth-service'
+import { FormsModule } from '@angular/forms';
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { AuthService } from '../providers/auth-service';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAIWL1TSZzwnad43URMfB9xyaK8pLWfxIM",
-  authDomain: "login-for-study.firebaseapp.com",
-  databaseURL: "https://login-for-study.firebaseio.com",
-  storageBucket: "login-for-study.appspot.com",
-  messagingSenderId: "116062770696"
+// Must export the config
+export const firebaseConfig = {
+  apiKey: 'AIzaSyArJZ75oF81Ezb3oimXuKb0GrIWhPTSj98',
+  authDomain: 'igram-f57b5.firebaseapp.com',
+  databaseURL: 'https://igram-f57b5.firebaseio.com/',
+  storageBucket: 'gs://igram-f57b5.appspot.com'
+  // messagingSenderId: '<your-messaging-sender-id>'
+};
+
+export const myFirebaseAuthConfig = {
+  provider: AuthProviders.Google,
+  method: AuthMethods.Redirect
 };
 
 @NgModule({
@@ -24,12 +31,13 @@ const firebaseConfig = {
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    LoginPage
   ],
   imports: [
-    BrowserModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    FormsModule,
+    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -37,7 +45,8 @@ const firebaseConfig = {
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    LoginPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthService]
 })

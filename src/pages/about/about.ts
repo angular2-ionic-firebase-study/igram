@@ -1,21 +1,26 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
-import {AngularFire} from "angularfire2";
-import {AuthService} from "../../providers/auth-service";
+import { NavController, NavParams } from 'ionic-angular';
+import { AuthService } from '../../providers/auth-service';
 
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html'
 })
 export class AboutPage {
+  public authorizedData: any;
 
-  user:string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _auth: AuthService) {
+    this.navCtrl = navCtrl;
 
-  constructor(public navCtrl: NavController, public af: AngularFire, private _auth: AuthService) {
+    if (this.navParams.get('auth')) {
+      this.authorizedData = this.navParams.get('auth').auth;
+      console.log(this.authorizedData);
+    }
   }
 
-  ngOnInit() {
-    this.user = this._auth.email();
+  signOut() {
+    this._auth.signOut();
+    this.navCtrl.pop();
   }
 }
