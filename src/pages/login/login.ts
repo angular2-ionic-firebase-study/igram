@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Nav, NavController, NavParams, Tabs } from 'ionic-angular';
 import { AboutPage } from '../../pages/about/about';
 
 import { AuthService } from '../../providers/auth-service';
@@ -18,15 +18,16 @@ import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 
 export class LoginPage {
   id : any;
   pw : any;
+
   items: FirebaseListObservable<any[]>;
 
-  constructor(public af: AngularFire, private _auth: AuthService, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public af: AngularFire, private _auth: AuthService, public navCtrl: NavController, public navParams: NavParams, nav: Nav) {
     // this.af.auth.subscribe(auth => console.log(auth));
     this.items = af.database.list('/items');
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    // console.log('ionViewDidLoad LoginPage');
   }
 
   authLogin() {
@@ -51,19 +52,13 @@ export class LoginPage {
 
   signInWithGoogle(): void {
     this._auth.signInWithGoogle()
-      .then(() => this.onSignInSuccessGoogle());
-  }
-
-  private onSignInSuccess(): void {
-    console.log("Facebook display name ",this._auth.displayName());
-  }
-
-  private onSignInSuccessGoogle(): void {
-    console.log("Google User name ",this._auth.displayName());
+      .then((success) => this.navigateAbout(success));
   }
 
   private navigateAbout(successData): void {
-    this.navCtrl.setRoot(AboutPage, {
+    this.navParams = successData;
+
+    this.navCtrl.push(AboutPage, {
       auth : successData
     });
   }

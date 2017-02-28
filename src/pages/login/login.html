@@ -28,8 +28,8 @@
 
   </ion-list>
   <button ion-button (click)="authLogin()">Login</button>
-  <button ion-button icon-left outline (click)="signInWithFacebook()"><ion-icon name="logo-facebook"></ion-icon>Login with Facebook</button>
-  <button ion-button icon-left outline (click)="signInWithGoogle()"><ion-icon name="logo-google"></ion-icon>Login with Google</button>
+  <button ion-button icon-left (click)="signInWithFacebook()"><ion-icon name="logo-facebook"></ion-icon>Login</button>
+  <button ion-button icon-left (click)="signInWithGoogle()"><ion-icon name="logo-google"></ion-icon>Login</button>
 
   <ion-list>
     <ion-item class="text" *ngFor="let item of items | async">

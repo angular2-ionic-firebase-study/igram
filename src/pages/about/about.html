@@ -7,14 +7,14 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <img src="img/nin-live.png"/>
+  <ion-card *ngIf="authorizedData">
+    <img src="{{authorizedData.photoURL}}"/>
     <ion-card-content>
       <ion-card-title>
-        What is the user name? {{authorizedData.displayName}}
+        {{authorizedData.displayName}}
         </ion-card-title>
       <p>
-        "Who are you?" {{authorizedData.email}}
+        Email : {{authorizedData.email}}
       </p>
     </ion-card-content>
   </ion-card>
