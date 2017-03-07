@@ -9,6 +9,7 @@
 
 <ion-content padding>
   <ion-card *ngIf="authorizedData">
+    <button ion-button (click)="uploadImage()">Upload File</button>
     <img src="{{authorizedData.photoURL}}"/>
     <ion-card-content>
       <ion-card-title>
@@ -22,5 +23,7 @@
       </p>
     </ion-card-content>
   </ion-card>
+
+
 
 </ion-content>

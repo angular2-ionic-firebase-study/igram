@@ -23,4 +23,5 @@ export class AboutPage {
     this._auth.signOut();
     this.navCtrl.pop();
   }
+
 }
