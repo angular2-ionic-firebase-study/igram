@@ -20,30 +20,38 @@ export class UploadPage {
 
   public base64Image: string;
   public storageRef: any;
+  public guestPicture: any;
 
   constructor(@Inject(FirebaseApp) firebaseApp: any, public af: AngularFire, private _auth: AuthService, public navCtrl: NavController, public navParams: NavParams) {
     this.storageRef = firebaseApp.storage().ref();
+    this.guestPicture = null;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UploadPage');
-  }
+  uploadImage(name, data) {
+    // var blob = new Blob(["food"], {type: 'image/png'});
+    // return this.storageRef.child('/images/sample.png').put(blob).then(function(snapshot) {
+    //   alert("uploaded");
+    // });
 
-  uploadImage() {
-    var file = new Blob(["food"], {type: 'image/png'});
-    this.storageRef.child('/images/sample.png').put(file).then(function(snapshot) {
-      alert("uploaded");
-    });
+    return this.storageRef.child('/images/new_sample.png')
+      .putString(this.guestPicture, 'base64', {contentType : 'image/png'})
+      .then((savedPicture) => {
+        alert(savedPicture);
+      });
   }
 
   takePicture(){
-    Camera.getPicture({
+    return Camera.getPicture({
         destinationType: Camera.DestinationType.DATA_URL,
-        targetWidth: 1000,
-        targetHeight: 1000
+        encodingType: Camera.EncodingType.PNG,
+        targetWidth: 400,
+        targetHeight: 400
     }).then((imageData) => {
       // imageData is a base64 encoded string
-        this.base64Image = "data:image/jpeg;base64," + imageData;
+      //   this.base64Image = "data:image/png;base64," + imageData;
+
+      this.guestPicture = imageData;
+      alert("imageData" + imageData);
     }, (err) => {
         console.log(err);
     });
