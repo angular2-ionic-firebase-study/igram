@@ -6,7 +6,11 @@
   <content src="index.html"/>
   <access origin="*"/>
   <allow-navigation href="http://ionic.local/*"/>
-  <allow-navigation href="https://*/*"/>
+  <!-- The above is equivalent to these three declarations -->
+  <allow-navigation href="http://*/*" />
+  <allow-navigation href="https://*/*" />
+  <allow-navigation href="data:*" />
+
   <allow-intent href="https://igram-f57b5.firebaseio.com/"/>
   <allow-intent href="https://*.firebaseio.com"/>
   <allow-intent href="http://*/*"/>

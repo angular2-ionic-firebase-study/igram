@@ -43,12 +43,19 @@ export class LoginPage {
 
   signInWithFacebook(): void {
     this._auth.signInWithFacebook()
-      .then((success) => this.navigateAbout(success));
+      .then((success) => this.navigateAbout(success))
+      .catch((err) => alert(err));
   }
 
-  signInWithGoogle(): void {
+  signInWithGoogle() {
     this._auth.signInWithGoogle()
-      .then((success) => this.navigateAbout(success));
+      .then((success) => this.navigateAbout(success))
+      .catch((err) => alert(err));
+
+    // this.af.auth.login({
+    //   provider: AuthProviders.Google,
+    //   method: AuthMethods.Popup
+    // }).then((success) => this.navigateAbout(success));
   }
 
   private navigateAbout(successData): void {
