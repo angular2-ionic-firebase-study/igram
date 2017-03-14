@@ -26,10 +26,6 @@ export class LoginPage {
     this.items = af.database.list('/items');
   }
 
-  ionViewDidLoad() {
-    // console.log('ionViewDidLoad LoginPage');
-  }
-
   authLogin() {
     this.af.auth.login({
       email: this.id,

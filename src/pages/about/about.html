@@ -22,5 +22,26 @@
       </p>
     </ion-card-content>
   </ion-card>
-
+  <ion-card *ngIf="authorizedData">
+    <ion-grid>
+      <ion-row>
+        <ion-item>
+          <ion-icon name="logo-instagram" item-left></ion-icon>
+          Uploaded Photos
+          <ion-badge item-right>3</ion-badge>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4>
+          <img src="">
+        </ion-col>
+        <ion-col col-4>
+          <img src="">
+        </ion-col>
+        <ion-col col-4>
+          <img src="">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
 </ion-content>

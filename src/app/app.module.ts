@@ -1,10 +1,12 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+import { UploadPage } from '../pages/upload/upload';
 
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
@@ -30,7 +32,8 @@ export const myFirebaseAuthConfig = {
     AboutPage,
     ContactPage,
     HomePage,
-    LoginPage
+    LoginPage,
+    UploadPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -43,7 +46,8 @@ export const myFirebaseAuthConfig = {
     AboutPage,
     ContactPage,
     HomePage,
-    LoginPage
+    LoginPage,
+    UploadPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthService]
 })
