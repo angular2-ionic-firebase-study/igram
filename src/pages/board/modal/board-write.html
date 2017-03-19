@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      글쓰기
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-input [(ngModel)]="title" placeholder="제목을 입력하세요"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-textarea [(ngModel)]="content" placeholder="내용을 입력하세요"></ion-textarea>
+  </ion-item>
+
+  <button ion-button (click)="write()" block="" class="disable-hover button button-wp button-default button-default-wp button-block button-block-wp" tappable="" style="transition: none;"><span class="button-inner">등록</span><div class="button-effect"></div></button>
+  <button ion-button (click)="dismiss()" color="danger" full="" class="disable-hover button button-wp button-default button-default-wp button-full button-full-wp button-wp-danger" style="transition: none;"><span class="button-inner">닫기</span><div class="button-effect"></div></button>
+</ion-content>
