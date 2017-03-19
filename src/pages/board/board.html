@@ -11,7 +11,7 @@
 
 <ion-content>
   <h3>게시판</h3>
-  <button ion-button (click)="write()"> 추가 </button> <br/>
+  <button ion-button (click)="showWriteModal()"> 추가 </button> <br/>
   <ul>
     <li *ngFor="let board of boards | async">
       {{ board | json }}

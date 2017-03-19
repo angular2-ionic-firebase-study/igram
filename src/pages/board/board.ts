@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 
-import { NavController, ModalController, NavParams } from 'ionic-angular';
+import {ModalController} from 'ionic-angular';
 import {AuthService} from "../../providers/auth-service";
+import {BoardWritePage} from "./modal/board-write";
+
 import {AngularFire, FirebaseListObservable} from "angularfire2";
 
 @Component({
@@ -12,11 +14,14 @@ export class BoardPage {
 
   boards: FirebaseListObservable<any[]>;
 
-  constructor(public navCtrl: NavController, public af: AngularFire, private _auth: AuthService) {
+  constructor(public modalCtrl: ModalController, public af: AngularFire, private _auth: AuthService) {
     this.boards = af.database.list('boards');
   }
 
-  write() {
-    this.boards.push({'title':'hello', 'content':'테스트입니다'});
+  showWriteModal() {
+    let writeModal = this.modalCtrl.create(BoardWritePage);
+    writeModal.onDidDismiss(() => {});
+    writeModal.present();
   }
+
 }

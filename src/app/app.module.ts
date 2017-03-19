@@ -11,6 +11,7 @@ import { UploadPage } from '../pages/upload/upload';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { AuthService } from '../providers/auth-service';
+import {BoardWritePage} from "../pages/board/modal/board-write";
 
 // Must export the config
 export const firebaseConfig = {
@@ -31,6 +32,7 @@ export const myFirebaseAuthConfig = {
     MyApp,
     AboutPage,
     BoardPage,
+    BoardWritePage,
     HomePage,
     LoginPage,
     UploadPage
@@ -45,6 +47,7 @@ export const myFirebaseAuthConfig = {
     MyApp,
     AboutPage,
     BoardPage,
+    BoardWritePage,
     HomePage,
     LoginPage,
     UploadPage
