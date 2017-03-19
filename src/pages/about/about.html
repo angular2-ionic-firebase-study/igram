@@ -9,7 +9,7 @@
 
 <ion-content padding>
   <ion-card *ngIf="authorizedData">
-    <img src="{{authorizedData.photoURL}}"/>
+    <!-- <img src="{{authorizedData.photoURL}}"/> -->
     <ion-card-content>
       <ion-card-title>
         {{authorizedData.displayName}}
@@ -32,7 +32,12 @@
         </ion-item>
       </ion-row>
       <ion-row>
-        <ion-col col-4>
+        <ion-list>
+          <ion-item class="text" *ngFor="let imgUrl of imgUrls | async">
+            {{imgUrl.$value}}
+          </ion-item>
+        </ion-list>
+        <!-- <ion-col col-4>
           <img src="">
         </ion-col>
         <ion-col col-4>
@@ -40,7 +45,7 @@
         </ion-col>
         <ion-col col-4>
           <img src="">
-        </ion-col>
+        </ion-col> -->
       </ion-row>
     </ion-grid>
   </ion-card>

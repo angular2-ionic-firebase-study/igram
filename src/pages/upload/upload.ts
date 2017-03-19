@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { AngularFire, FirebaseApp } from 'angularfire2';
+import { AngularFire, FirebaseApp, FirebaseListObservable } from 'angularfire2';
 import { AuthService } from '../../providers/auth-service';
 
 import { Camera } from 'ionic-native';
@@ -20,11 +20,16 @@ export class UploadPage {
 
   public base64Image: string;
   public storageRef: any;
+  public dbRef: any;
   public guestPicture: any;
+
+  public items: FirebaseListObservable<any[]>;
 
   constructor(@Inject(FirebaseApp) firebaseApp: any, public af: AngularFire, private _auth: AuthService, public navCtrl: NavController, public navParams: NavParams) {
     this.storageRef = firebaseApp.storage().ref();
     this.guestPicture = null;
+
+    this.dbRef = af.database.list('/imagesURLs');
   }
 
   uploadImage(name, data) {
@@ -37,6 +42,12 @@ export class UploadPage {
       .putString(this.guestPicture, 'base64', {contentType : 'image/png'})
       .then((savedPicture) => {
         alert(savedPicture);
+
+        this.dbRef.push({
+          "img_title" : "josh",
+          "url" : savedPicture
+        });
+        alert("URL uploaded");
       });
   }
 
@@ -48,10 +59,10 @@ export class UploadPage {
         targetHeight: 400
     }).then((imageData) => {
       // imageData is a base64 encoded string
-      //   this.base64Image = "data:image/png;base64," + imageData;
-
+      this.base64Image = "data:image/png;base64," + imageData;
       this.guestPicture = imageData;
-      alert("imageData" + imageData);
+
+      alert("The photo was taken");
     }, (err) => {
         console.log(err);
     });
