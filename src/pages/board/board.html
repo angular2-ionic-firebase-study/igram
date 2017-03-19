@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      게시판
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <h3>게시판</h3>
+  <button ion-button (click)="write()"> 추가 </button> <br/>
+  <ul>
+    <li *ngFor="let board of boards | async">
+      {{ board | json }}
+    </li>
+  </ul>
+
+</ion-content>

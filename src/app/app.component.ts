@@ -4,8 +4,9 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
-import { ContactPage } from '../pages/contact/contact';
 import { UploadPage } from '../pages/upload/upload';
+import { BoardPage } from '../pages/board/board';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -21,8 +22,8 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Login', component: LoginPage },
-      { title: 'Contact', component: ContactPage },
-      { title: 'Upload', component: UploadPage }
+      { title: 'Upload', component: UploadPage },
+      { title: 'Board', component: BoardPage }
     ];
 
     platform.ready().then(() => {
