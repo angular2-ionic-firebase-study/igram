@@ -18,7 +18,7 @@ import { Camera } from 'ionic-native';
 })
 export class UploadPage {
 
-  public base64Image: string;
+  public base64Image: any;
   public storageRef: any;
   public dbRef: any;
   public guestPicture: any;
@@ -35,13 +35,14 @@ export class UploadPage {
     this.uid = af.auth.getAuth().uid;
     this.displayName = af.auth.getAuth().auth.displayName;
 
+    this.base64Image = null;
     this.guestPicture = null;
     this.takenTime = null;
 
     // console.log("uid : ", this.uid);
   }
 
-  uploadImage(name, data) {
+  uploadImage() {
     // var blob = new Blob(["food"], {type: 'image/png'});
     // return this.storageRef.child('/images/sample.png').put(blob).then(function(snapshot) {
     //   alert("uploaded");
@@ -57,26 +58,31 @@ export class UploadPage {
           "date" : this.takenTime,
           "url" : savedPicture.downloadURL
         }).then((success) => {
-          alert("URL uploaded" + success);
+          alert("URL uploaded : " + success);
         }, (error) => {
           alert("Failed URL upload" + error);
         });
       });
   }
 
+  // Choose the picture from the Photo Library
+  // sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
+
   takePicture(){
     return Camera.getPicture({
         destinationType: Camera.DestinationType.DATA_URL,
-        encodingType: Camera.EncodingType.PNG,
+        sourceType : Camera.PictureSourceType.CAMERA,
+        encodingType: Camera.EncodingType.JPEG,
+        // encodingType: Camera.EncodingType.PNG,
         targetWidth: 400,
         targetHeight: 400
     }).then((imageData) => {
       // imageData is a base64 encoded string
-      this.base64Image = "data:image/png;base64," + imageData;
+      this.base64Image = "data:image/jpeg;base64," + imageData;
       this.guestPicture = imageData;
       this.takenTime = this.getDate();
 
-      alert("The photo was taken");
+      // alert("The photo was taken");
     }, (err) => {
       alert(err);
     });

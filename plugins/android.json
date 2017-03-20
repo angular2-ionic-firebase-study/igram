@@ -27,6 +27,9 @@
         },
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.ionicframework.cutepuppypics378050"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.ionicframework.cutepuppypics378050"
         }
     },
     "dependent_plugins": {
