@@ -24,12 +24,21 @@ export class UploadPage {
   public guestPicture: any;
 
   public items: FirebaseListObservable<any[]>;
+  public uid: string;
+  public displayName: string;
+  private takenTime: string;
 
   constructor(@Inject(FirebaseApp) firebaseApp: any, public af: AngularFire, private _auth: AuthService, public navCtrl: NavController, public navParams: NavParams) {
     this.storageRef = firebaseApp.storage().ref();
-    this.guestPicture = null;
-
     this.dbRef = af.database.list('/imagesURLs');
+
+    this.uid = af.auth.getAuth().uid;
+    this.displayName = af.auth.getAuth().auth.displayName;
+
+    this.guestPicture = null;
+    this.takenTime = null;
+
+    // console.log("uid : ", this.uid);
   }
 
   uploadImage(name, data) {
@@ -38,22 +47,20 @@ export class UploadPage {
     //   alert("uploaded");
     // });
 
-    // return this.dbRef.push({
-    //   "img_title" : "josh",
-    //   "url" : "www.google.com"
-    // }).then((success) => {
-    //   alert(success);
-    // });
-
-    return this.storageRef.child('/images/new_sample.png')
+    return this.storageRef.child('/images/'+this.uid+'/new_sample.png')
       .putString(this.guestPicture, 'base64', {contentType : 'image/png'})
       .then((savedPicture) => {
         // alert(savedPicture);
         this.dbRef.push({
-          "img_title" : "Team Cap",
+          "uid" : this.uid,
+          "name" : this.displayName,
+          "date" : this.takenTime,
           "url" : savedPicture.downloadURL
+        }).then((success) => {
+          alert("URL uploaded" + success);
+        }, (error) => {
+          alert("Failed URL upload" + error);
         });
-        alert("URL uploaded");
       });
   }
 
@@ -67,11 +74,17 @@ export class UploadPage {
       // imageData is a base64 encoded string
       this.base64Image = "data:image/png;base64," + imageData;
       this.guestPicture = imageData;
+      this.takenTime = this.getDate();
 
       alert("The photo was taken");
     }, (err) => {
-        console.log(err);
+      alert(err);
     });
+  }
+
+  private getDate(): string {
+    var date = new Date();
+    return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
   }
 
 }
