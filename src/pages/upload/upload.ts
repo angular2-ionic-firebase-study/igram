@@ -38,14 +38,20 @@ export class UploadPage {
     //   alert("uploaded");
     // });
 
+    // return this.dbRef.push({
+    //   "img_title" : "josh",
+    //   "url" : "www.google.com"
+    // }).then((success) => {
+    //   alert(success);
+    // });
+
     return this.storageRef.child('/images/new_sample.png')
       .putString(this.guestPicture, 'base64', {contentType : 'image/png'})
       .then((savedPicture) => {
-        alert(savedPicture);
-
+        // alert(savedPicture);
         this.dbRef.push({
-          "img_title" : "josh",
-          "url" : savedPicture
+          "img_title" : "Team Cap",
+          "url" : savedPicture.downloadURL
         });
         alert("URL uploaded");
       });
