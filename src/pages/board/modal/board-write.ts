@@ -24,10 +24,15 @@ export class BoardWritePage {
 
   write() {
     const user = this._auth.displayName();
+    const uid = this._auth.uid();
+    const title = this.title || '';
+    const content = this.content || '';
+
     this.boards.push({
+      'uid':uid,
       'user':user,
-      'title': this.title,
-      'content': this.content
+      'title': title,
+      'content': content
     }).then((success) => this.dismiss())
       .catch((err) => alert('등록에 실패하였습니다.'));
   }
