@@ -9,21 +9,19 @@
 
 <ion-content padding>
   <ion-card *ngIf="authorizedData">
-    <!-- <img src="{{authorizedData.photoURL}}"/> -->
-    <ion-card-content>
-      <ion-card-title>
-        {{authorizedData.displayName}}
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="{{authorizedData.photoURL}}">
+      </ion-avatar>
+      <h2>{{authorizedData.displayName}}</h2>
+      <p>{{authorizedData.email}}
         <button ion-button (click)="signOut()" style="vertical-align: baseline;">
           <ion-icon name="log-out"></ion-icon>
         </button>
-      </ion-card-title>
-      <p>
-        Email : {{authorizedData.email}}
       </p>
-    </ion-card-content>
-  </ion-card>
-  <ion-card *ngIf="authorizedData">
-    <ion-grid>
+    </ion-item>
+    <hr>
+    <ion-grid *ngIf="authorizedData">
       <ion-row>
         <ion-item>
           <ion-icon name="logo-instagram" item-left></ion-icon>
@@ -31,16 +29,11 @@
           <ion-badge item-right>3</ion-badge>
         </ion-item>
       </ion-row>
-      <ion-row>
-        <ion-list>
-          <ion-item class="text" *ngFor="let imgUrl of imgUrls | async">
-            {{imgUrl.$value}}
-          </ion-item>
-        </ion-list>
-        <!-- <ion-col col-4>
-          <img src="">
-        </ion-col>
+      <ion-row *ngFor="let imgUrl of imgUrls | async">
         <ion-col col-4>
+          <img src="{{imgUrl.url}}">
+        </ion-col>
+        <!-- <ion-col col-4>
           <img src="">
         </ion-col>
         <ion-col col-4>
@@ -48,5 +41,14 @@
         </ion-col> -->
       </ion-row>
     </ion-grid>
+    <ion-card-content>
+      <ion-fab bottom left>
+        <button ion-fab color="light"><ion-icon name="add"></ion-icon></button>
+        <ion-fab-list side="right">
+          <button ion-fab (click)="takePicture()"><ion-icon name="camera"></ion-icon></button>
+          <button ion-fab (click)="selectFromPhotoAlbum()"><ion-icon name="images"></ion-icon></button>
+        </ion-fab-list>
+      </ion-fab>
+    </ion-card-content>
   </ion-card>
 </ion-content>

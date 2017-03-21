@@ -16,7 +16,9 @@
 
 <ion-content padding>
   <button ion-button (click)="takePicture()">Take a photo</button>
-  <button ion-button (click)="uploadImage(first, this.base64Image)">Upload File</button><br>
+  <button ion-button (click)="uploadImage()">Upload File</button><br>
   Latest Picture :
-  <img [src]="base64Image" *ngIf="base64Image" />
+  <img *ngIf="base64Image" [src]="base64Image">
+
+  <ion-input type="text" [(ngModel)]="takenImg"></ion-input>
 </ion-content>

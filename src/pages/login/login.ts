@@ -24,12 +24,15 @@ export class LoginPage {
   constructor(public af: AngularFire, private _auth: AuthService, public navCtrl: NavController, public navParams: NavParams, nav: Nav) {
     // this.af.auth.subscribe(auth => console.log(auth));
     this.items = af.database.list('/items');
+
+    this.id = "test@abc.com";
+    this.pw = "qwer1234";
   }
 
   authLogin() {
     this.af.auth.login({
       email: this.id,
-      password: this.pw,
+      password: this.pw
     },
     {
       provider: AuthProviders.Password,
