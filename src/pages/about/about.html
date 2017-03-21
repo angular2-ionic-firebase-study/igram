@@ -11,6 +11,13 @@
   <ion-card *ngIf="authorizedData">
     <!-- <img src="{{authorizedData.photoURL}}"/> -->
     <ion-card-content>
+      <ion-fab bottom left>
+        <button ion-fab color="light"><ion-icon name="add"></ion-icon></button>
+        <ion-fab-list side="right">
+          <button ion-fab (click)="takePicture()"><ion-icon name="camera"></ion-icon></button>
+          <button ion-fab (click)="selectFromPhotoAlbum()"><ion-icon name="images"></ion-icon></button>
+        </ion-fab-list>
+      </ion-fab>
       <ion-card-title>
         {{authorizedData.email}}
         <button ion-button (click)="signOut()" style="vertical-align: baseline;">
@@ -18,7 +25,7 @@
         </button>
       </ion-card-title>
       <p>
-        Name : {{authorizedData.displayName}}
+        <!-- {{authorizedData.displayName}} -->
       </p>
     </ion-card-content>
   </ion-card>
