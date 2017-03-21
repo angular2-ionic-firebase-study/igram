@@ -12,13 +12,13 @@
     <!-- <img src="{{authorizedData.photoURL}}"/> -->
     <ion-card-content>
       <ion-card-title>
-        {{authorizedData.displayName}}
+        {{authorizedData.email}}
         <button ion-button (click)="signOut()" style="vertical-align: baseline;">
           <ion-icon name="log-out"></ion-icon>
         </button>
       </ion-card-title>
       <p>
-        Email : {{authorizedData.email}}
+        Name : {{authorizedData.displayName}}
       </p>
     </ion-card-content>
   </ion-card>
@@ -31,16 +31,17 @@
           <ion-badge item-right>3</ion-badge>
         </ion-item>
       </ion-row>
-      <ion-row>
-        <ion-list>
+      <ion-row *ngFor="let imgUrl of imgUrls | async">
+        <!-- <ion-list>
           <ion-item class="text" *ngFor="let imgUrl of imgUrls | async">
             {{imgUrl.$value}}
+            {{imgUrl | json}}
           </ion-item>
-        </ion-list>
-        <!-- <ion-col col-4>
-          <img src="">
-        </ion-col>
+        </ion-list> -->
         <ion-col col-4>
+          <img src="{{imgUrl.url}}">
+        </ion-col>
+        <!-- <ion-col col-4>
           <img src="">
         </ion-col>
         <ion-col col-4>

@@ -276,7 +276,7 @@
 				LastUpgradeCheck = 0820;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = 3929QXLHC9;
+						DevelopmentTeam = XDPJGTA5MY;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -389,7 +389,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 3929QXLHC9;
+				DEVELOPMENT_TEAM = XDPJGTA5MY;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -416,7 +416,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = 3929QXLHC9;
+				DEVELOPMENT_TEAM = XDPJGTA5MY;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Igram/Igram-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;

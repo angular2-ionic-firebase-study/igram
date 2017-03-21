@@ -72,17 +72,13 @@ export class UploadPage {
     return Camera.getPicture({
         destinationType: Camera.DestinationType.DATA_URL,
         sourceType : Camera.PictureSourceType.CAMERA,
-        encodingType: Camera.EncodingType.JPEG,
-        // encodingType: Camera.EncodingType.PNG,
+        encodingType: Camera.EncodingType.PNG,
         targetWidth: 400,
         targetHeight: 400
     }).then((imageData) => {
-      // imageData is a base64 encoded string
-      this.base64Image = "data:image/jpeg;base64," + imageData;
+      this.base64Image = "data:image/png;base64," + imageData;
       this.guestPicture = imageData;
       this.takenTime = this.getDate();
-
-      // alert("The photo was taken");
     }, (err) => {
       alert(err);
     });

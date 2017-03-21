@@ -25,7 +25,7 @@ export class AboutPage {
       // console.log(this.authorizedData);
     }
 
-    this.storageRef = firebaseApp.storage().ref().child("/images/new_sample.png");
+    this.storageRef = firebaseApp.storage().ref().child('/images/new_sample.png');
     this.storageRef.getDownloadURL().then(url => console.log(url));
 
     this.imgUrls = af.database.list('/imagesURLs');
