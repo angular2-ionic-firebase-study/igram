@@ -1,9 +1,10 @@
+import { Platform } from 'ionic-angular';
+import { Facebook } from 'ionic-native';
+
 import { Injectable } from '@angular/core';
-// import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { AuthProviders, AngularFireAuth, FirebaseAuthState, AuthMethods } from 'angularfire2';
-
 
 /*
  Generated class for the AuthService provider.
@@ -15,7 +16,7 @@ import { AuthProviders, AngularFireAuth, FirebaseAuthState, AuthMethods } from '
 export class AuthService {
   private authState: FirebaseAuthState;
 
-  constructor(public auth$: AngularFireAuth) {
+  constructor(public auth$: AngularFireAuth, private platform: Platform) {
     this.authState = auth$.getAuth();
     auth$.subscribe((state: FirebaseAuthState) => {
       this.authState = state;
@@ -27,10 +28,22 @@ export class AuthService {
   }
 
   signInWithFacebook(): firebase.Promise<FirebaseAuthState> {
-    return this.auth$.login({
-      provider: AuthProviders.Facebook,
-      method: AuthMethods.Popup
-    });
+    // return this.auth$.login({
+    //   provider: AuthProviders.Facebook,
+    //   method: AuthMethods.Popup
+    // });
+
+    if (this.platform.is('cordova')) {
+      return Facebook.login(['email', 'public_profile']).then(res => {
+        const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
+        return firebase.auth().signInWithCredential(facebookCredential);
+      });
+    } else {
+      return this.auth$.login({
+        provider: AuthProviders.Facebook,
+        method: AuthMethods.Popup
+      });
+    }
   }
 
   signInWithGoogle(): firebase.Promise<FirebaseAuthState> {

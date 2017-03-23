@@ -237,6 +237,14 @@ module.exports = [
             "cordova"
         ],
         "runs": true
+    },
+    {
+        "id": "cordova-plugin-facebook4.FacebookConnectPlugin",
+        "file": "plugins/cordova-plugin-facebook4/www/facebook-native.js",
+        "pluginId": "cordova-plugin-facebook4",
+        "clobbers": [
+            "facebookConnectPlugin"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -250,7 +258,8 @@ module.exports.metadata =
     "ionic-plugin-keyboard": "2.2.1",
     "cordova-plugin-compat": "1.1.0",
     "cordova-plugin-camera": "2.3.1",
-    "cordova-plugin-file": "4.3.2"
+    "cordova-plugin-file": "4.3.2",
+    "cordova-plugin-facebook4": "1.7.4"
 };
 // BOTTOM OF METADATA
 });
