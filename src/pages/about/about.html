@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="custom">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -41,14 +41,13 @@
         </ion-col> -->
       </ion-row>
     </ion-grid>
-    <ion-card-content>
-      <ion-fab bottom left>
-        <button ion-fab color="light"><ion-icon name="add"></ion-icon></button>
-        <ion-fab-list side="right">
-          <button ion-fab (click)="takePicture()"><ion-icon name="camera"></ion-icon></button>
-          <button ion-fab (click)="selectFromPhotoAlbum()"><ion-icon name="images"></ion-icon></button>
-        </ion-fab-list>
-      </ion-fab>
-    </ion-card-content>
   </ion-card>
 </ion-content>
+
+<ion-fab bottom left>
+  <button ion-fab color="light"><ion-icon name="add"></ion-icon></button>
+  <ion-fab-list side="right">
+    <button ion-fab (click)="takePicture()"><ion-icon name="camera"></ion-icon></button>
+    <button ion-fab (click)="selectFromPhotoAlbum()"><ion-icon name="images"></ion-icon></button>
+  </ion-fab-list>
+</ion-fab>
