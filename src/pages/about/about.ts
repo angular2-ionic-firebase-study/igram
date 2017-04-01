@@ -4,7 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 
 import { FirebaseApp, AngularFire, FirebaseListObservable } from 'angularfire2';
-import { Camera } from 'ionic-native';
+import {Camera} from 'ionic-native';
 
 @Component({
   selector: 'page-about',
@@ -17,7 +17,6 @@ export class AboutPage {
 
   public authorizedData: any;
   public storageRef: any;
-  public dbRef: any;
 
   public uid: string;
   public displayName: string;
@@ -27,24 +26,18 @@ export class AboutPage {
 
   constructor(@Inject(FirebaseApp) firebaseApp: any, public af: AngularFire, public navCtrl: NavController, public navParams: NavParams, private _auth: AuthService) {
     this.navCtrl = navCtrl;
-
-    if (this.navParams.get('auth')) {
-      this.authorizedData = this.navParams.get('auth').auth;
-      this.imgUrls = af.database.list('/imagesURLs');
-    }
-
     this.storageRef = firebaseApp.storage().ref();
-    this.dbRef = af.database.list('/imagesURLs');
-
     this.uid = af.auth.getAuth().uid;
+    this.imgUrls = af.database.list('/imagesURLs',{ query: { orderByChild: 'uid', equalTo: this.uid} });
     this.displayName = af.auth.getAuth().auth.displayName;
 
     this.base64Image = null;
     this.guestPicture = null;
     this.takenTime = null;
 
-    // this.storageRef = firebaseApp.storage().ref().child('/images/new_sample.png');
-    // this.storageRef.getDownloadURL().then(url => console.log(url));
+    if (this.navParams.get('auth')) {
+      this.authorizedData = this.navParams.get('auth').auth;
+    }
   }
 
   signOut() {
@@ -88,7 +81,7 @@ export class AboutPage {
     return this.storageRef.child('/images/'+this.uid+'/new_sample.png')
       .putString(this.guestPicture, 'base64', {contentType : 'image/png'})
       .then((savedPicture) => {
-        this.dbRef.push({
+        this.imgUrls.push({
           "uid" : this.uid,
           "name" : this.displayName,
           "date" : this.takenTime,

@@ -3,19 +3,30 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>
-      게시판
-    </ion-title>
+    <ion-title>이미지</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <h3>게시판</h3>
-  <button ion-button (click)="showWriteModal()"> 추가 </button> <br/>
-  <ul>
-    <li *ngFor="let board of boards | async">
-      {{ board | json }}
-    </li>
-  </ul>
-
+<ion-content padding>
+  <ion-card>
+    <hr>
+    <ion-grid >
+      <ion-row *ngFor="let image of images | async">
+        <ion-col col-4>
+          <img src="{{image.url}}">
+          <button (click)="like()"><ion-icon ios="ios-heart" md="md-heart"></ion-icon></button>
+          <label>10명이 좋아합니다.</label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-card-content>
+      <ion-fab bottom left>
+        <button ion-fab color="light"><ion-icon name="add"></ion-icon></button>
+        <ion-fab-list side="right">
+          <button ion-fab (click)="takePicture()"><ion-icon name="camera"></ion-icon></button>
+          <button ion-fab (click)="selectFromPhotoAlbum()"><ion-icon name="images"></ion-icon></button>
+        </ion-fab-list>
+      </ion-fab>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -70,4 +70,7 @@ export class AuthService {
     return '';
   }
 
+  uid(): string {
+    return this.authState.uid;
+  }
 }
