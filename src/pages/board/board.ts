@@ -32,7 +32,7 @@ export class BoardPage {
     }
   }
 
-  selectFromPhotoAlbum() {
+  upload() {
     const uid = this._auth.uid();
     const userEmail = this._auth.displayName();
     const date = new Date();
@@ -45,6 +45,7 @@ export class BoardPage {
           "uid" : uid,
           "userEmail" : userEmail,
           "date" : date,
+          "likeMembers": "",
           "url" : savedPicture.downloadURL
         }).then((success) => {
           alert("URL uploaded : " + success);
@@ -65,6 +66,7 @@ export class BoardPage {
       this.base64Image = "data:image/png;base64," + imageData;
       this.guestPicture = imageData;
       this.takenTime = this.format(new Date());
+      this.upload();
     }, (err) => {
       alert(err);
     });
@@ -79,8 +81,23 @@ export class BoardPage {
       +":" + date.getUTCSeconds();
   }
 
-  like(){
+  like(key, likeMembers){
+    const newLikeMembers = likeMembers || [];
+    if(this.isFirstLike(this._auth.uid(), newLikeMembers)){
+      newLikeMembers.push(this._auth.uid());
+      this.images.update(key, {likeMembers: newLikeMembers });
+    }else{
+      alert('이미 좋아요를 했습니다.');
+    }
+  }
 
+  isFirstLike(uid, likeMembers) {
+    const isLiked = likeMembers
+      .filter(function (likeMember) {
+        return uid === likeMember;
+      });
+
+    return isLiked.length === 0;
   }
 
   showWriteModal() {
