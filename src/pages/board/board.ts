@@ -83,7 +83,8 @@ export class BoardPage {
 
   like(key, likeMembers){
     const newLikeMembers = likeMembers || [];
-    if(this.isFirstLike(this._auth.uid(), newLikeMembers)){
+
+    if(!this.isLiked(newLikeMembers)){
       newLikeMembers.push(this._auth.uid());
       this.images.update(key, {likeMembers: newLikeMembers });
     }else{
@@ -91,13 +92,18 @@ export class BoardPage {
     }
   }
 
-  isFirstLike(uid, likeMembers) {
-    const isLiked = likeMembers
-      .filter(function (likeMember) {
-        return uid === likeMember;
-      });
+  isLiked(likeMembers) {
+    const uid = this._auth.uid();
 
-    return isLiked.length === 0;
+    return likeMembers
+        .filter(function (likeMember) {
+          return uid === likeMember;
+        }).length !== 0;
+  }
+
+  drawLikeIcon(likeMembers){
+    const newLikeMembers = likeMembers || [];
+    return this.isLiked(newLikeMembers)? 'md-heart' : 'md-heart-outline';
   }
 
   showWriteModal() {
