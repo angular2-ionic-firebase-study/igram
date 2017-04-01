@@ -15,10 +15,15 @@ page-login {
 
   .item-md {
     padding-left : 0px;
+    height: 56px;
   }
 
   h1 {
     text-align: center;
     margin: 30px 0px;
+  }
+
+  ion-label ion-icon {
+    margin-left: 5px;
   }
 }
