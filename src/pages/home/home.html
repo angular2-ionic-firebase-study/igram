@@ -9,31 +9,18 @@
 
 <ion-content class="card-background-page">
 
-  <!-- <ion-list>
-    <ion-item class="text" *ngFor="let item of items | async">
-      {{item.$value}}
-    </ion-item>
-  </ion-list> -->
-
-  <ion-card>
-    <img src="assets/img/gg.png"/>
-    <div class="card-title">Mountain View</div>
-    <div class="card-subtitle">
-      댓글 영역 :
-      <ion-input type="text" value=""></ion-input>
-    </div>
+  <ion-card *ngFor="let image of images | async">
+    <img src="{{image.url}}">
+    <button (click)="clickLikeBtn(image.$key, image.likeMembers)" style="background-color: white !important;">
+      <ion-icon name="{{drawLikeIcon(image.likeMembers)}}"></ion-icon>
+    </button>
+    <label>{{image.likeMembers.length}}명이 좋아합니다.</label>
   </ion-card>
-
-  <ion-card>
-    <img src="assets/img/lt.png"/>
-    <div class="card-title">Lake Tahoe</div>
-    <!-- <div class="card-subtitle">64 Listings</div> -->
-  </ion-card>
-
-  <ion-card>
-    <img src="assets/img/sf.png"/>
-    <div class="card-title">San Francisco</div>
-    <!-- <div class="card-subtitle">72 Listings</div> -->
-  </ion-card>
-
+  <ion-fab bottom left>
+    <button ion-fab color="light"><ion-icon name="add"></ion-icon></button>
+    <ion-fab-list side="right">
+      <button ion-fab (click)="takePicture()"><ion-icon name="camera"></ion-icon></button>
+      <button ion-fab (click)="upload()"><ion-icon name="images"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>
