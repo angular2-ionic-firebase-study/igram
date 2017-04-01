@@ -82,38 +82,38 @@ export class BoardPage {
   }
 
   clickLikeBtn(key, likeMembers){
-    const newLikeMembers = likeMembers || [];
-
-    if(this.isLiked(newLikeMembers)){
-      this.unlike(key, newLikeMembers);
+    if(this.isLiked(likeMembers)){
+      this.unlike(key, likeMembers);
     }else{
-      this.like(key, newLikeMembers);
+      this.like(key, likeMembers);
     }
   }
 
   isLiked(likeMembers) {
+    const newLikeMembers = likeMembers || [];
     const uid = this._auth.uid();
 
-    return likeMembers
+    return newLikeMembers
         .filter(likeMember => uid === likeMember)
         .length !== 0;
   }
 
   like(key, likeMembers) {
-    likeMembers.push(this._auth.uid());
-    this.images.update(key, {likeMembers: likeMembers });
+    const newLikeMembers = likeMembers || [];
+    newLikeMembers.push(this._auth.uid());
+    this.images.update(key, {likeMembers: newLikeMembers });
   }
 
   unlike(key, likeMembers) {
+    const newLikeMembers = likeMembers || [];
     const uid = this._auth.uid();
-    const filteredLikeMembers = likeMembers.filter(likeMember => uid !== likeMember);
+    const filteredLikeMembers = newLikeMembers.filter(likeMember => uid !== likeMember);
 
     this.images.update(key, {likeMembers: filteredLikeMembers.length > 0? filteredLikeMembers: "" });
   }
 
   drawLikeIcon(likeMembers){
-    const newLikeMembers = likeMembers || [];
-    return this.isLiked(newLikeMembers)? 'md-heart' : 'md-heart-outline';
+    return this.isLiked(likeMembers)? 'md-heart' : 'md-heart-outline';
   }
 
   showWriteModal() {
