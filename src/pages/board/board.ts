@@ -81,14 +81,13 @@ export class BoardPage {
       +":" + date.getUTCSeconds();
   }
 
-  like(key, likeMembers){
+  clickLikeBtn(key, likeMembers){
     const newLikeMembers = likeMembers || [];
 
-    if(!this.isLiked(newLikeMembers)){
-      newLikeMembers.push(this._auth.uid());
-      this.images.update(key, {likeMembers: newLikeMembers });
+    if(this.isLiked(newLikeMembers)){
+      this.unlike(key, newLikeMembers);
     }else{
-      alert('이미 좋아요를 했습니다.');
+      this.like(key, newLikeMembers);
     }
   }
 
@@ -99,6 +98,19 @@ export class BoardPage {
         .filter(function (likeMember) {
           return uid === likeMember;
         }).length !== 0;
+  }
+
+  like(key, likeMembers) {
+    likeMembers.push(this._auth.uid());
+    this.images.update(key, {likeMembers: likeMembers });
+  }
+
+  unlike(key, likeMembers) {
+    const uid = this._auth.uid();
+    const filteredLikeMembers = likeMembers.filter(function (likeMember) {
+      return uid !== likeMember;
+    });
+    this.images.update(key, {likeMembers: filteredLikeMembers });
   }
 
   drawLikeIcon(likeMembers){

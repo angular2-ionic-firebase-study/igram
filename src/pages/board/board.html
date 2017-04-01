@@ -14,7 +14,7 @@
       <ion-row *ngFor="let image of images | async">
         <ion-col col-4>
           <img src="{{image.url}}">
-          <button (click)="like(image.$key, image.likeMembers)" style="background-color: white !important;">
+          <button (click)="clickLikeBtn(image.$key, image.likeMembers)" style="background-color: white !important;">
             <ion-icon name="{{drawLikeIcon(image.likeMembers)}}"></ion-icon>
           </button>
           <label>{{image.likeMembers.length}}명이 좋아합니다.</label>
