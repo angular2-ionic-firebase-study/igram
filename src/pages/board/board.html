@@ -14,8 +14,10 @@
       <ion-row *ngFor="let image of images | async">
         <ion-col col-4>
           <img src="{{image.url}}">
-          <button (click)="like()"><ion-icon ios="ios-heart" md="md-heart"></ion-icon></button>
-          <label>10명이 좋아합니다.</label>
+          <button (click)="clickLikeBtn(image.$key, image.likeMembers)" style="background-color: white !important;">
+            <ion-icon name="{{drawLikeIcon(image.likeMembers)}}"></ion-icon>
+          </button>
+          <label>{{image.likeMembers.length}}명이 좋아합니다.</label>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -24,7 +26,7 @@
         <button ion-fab color="light"><ion-icon name="add"></ion-icon></button>
         <ion-fab-list side="right">
           <button ion-fab (click)="takePicture()"><ion-icon name="camera"></ion-icon></button>
-          <button ion-fab (click)="selectFromPhotoAlbum()"><ion-icon name="images"></ion-icon></button>
+          <button ion-fab (click)="upload()"><ion-icon name="images"></ion-icon></button>
         </ion-fab-list>
       </ion-fab>
     </ion-card-content>

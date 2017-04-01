@@ -32,7 +32,7 @@ export class BoardPage {
     }
   }
 
-  selectFromPhotoAlbum() {
+  upload() {
     const uid = this._auth.uid();
     const userEmail = this._auth.displayName();
     const date = new Date();
@@ -45,6 +45,7 @@ export class BoardPage {
           "uid" : uid,
           "userEmail" : userEmail,
           "date" : date,
+          "likeMembers": "",
           "url" : savedPicture.downloadURL
         }).then((success) => {
           alert("URL uploaded : " + success);
@@ -65,6 +66,7 @@ export class BoardPage {
       this.base64Image = "data:image/png;base64," + imageData;
       this.guestPicture = imageData;
       this.takenTime = this.format(new Date());
+      this.upload();
     }, (err) => {
       alert(err);
     });
@@ -79,8 +81,41 @@ export class BoardPage {
       +":" + date.getUTCSeconds();
   }
 
-  like(){
+  clickLikeBtn(key, likeMembers){
+    const newLikeMembers = likeMembers || [];
 
+    if(this.isLiked(newLikeMembers)){
+      this.unlike(key, newLikeMembers);
+    }else{
+      this.like(key, newLikeMembers);
+    }
+  }
+
+  isLiked(likeMembers) {
+    const uid = this._auth.uid();
+
+    return likeMembers
+        .filter(function (likeMember) {
+          return uid === likeMember;
+        }).length !== 0;
+  }
+
+  like(key, likeMembers) {
+    likeMembers.push(this._auth.uid());
+    this.images.update(key, {likeMembers: likeMembers });
+  }
+
+  unlike(key, likeMembers) {
+    const uid = this._auth.uid();
+    const filteredLikeMembers = likeMembers.filter(function (likeMember) {
+      return uid !== likeMember;
+    });
+    this.images.update(key, {likeMembers: filteredLikeMembers });
+  }
+
+  drawLikeIcon(likeMembers){
+    const newLikeMembers = likeMembers || [];
+    return this.isLiked(newLikeMembers)? 'md-heart' : 'md-heart-outline';
   }
 
   showWriteModal() {
