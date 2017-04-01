@@ -1,11 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
+import {Component, ViewChild} from "@angular/core";
+import {Nav, Platform} from "ionic-angular";
+import {Splashscreen, StatusBar} from "ionic-native";
 
-import { HomePage } from '../pages/home/home';
-import { LoginPage } from '../pages/login/login';
-import { UploadPage } from '../pages/upload/upload';
-import { BoardPage } from '../pages/board/board';
+import {HomePage} from "../pages/home/home";
+import {LoginPage} from "../pages/login/login";
 
 
 @Component({
@@ -21,9 +19,7 @@ export class MyApp {
   constructor(platform: Platform) {
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Login', component: LoginPage },
-      { title: 'Upload', component: UploadPage },
-      { title: 'Board', component: BoardPage }
+      { title: 'Login', component: LoginPage }
     ];
 
     platform.ready().then(() => {
