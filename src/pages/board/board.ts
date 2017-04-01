@@ -14,16 +14,15 @@ import {Camera} from "ionic-native";
 })
 export class BoardPage {
 
-  boards: FirebaseListObservable<any[]>;
+  images: FirebaseListObservable<any[]>;
   base64Image: any;
   storageRef: any;
-  dbRef: any;
   guestPicture: any;
   private takenTime: string;
 
   constructor(@Inject(FirebaseApp) firebaseApp: any, public modalCtrl: ModalController, public navCtrl: NavController, public af: AngularFire, private _auth: AuthService) {
     this.storageRef = firebaseApp.storage().ref();
-    this.boards = af.database.list('/board');
+    this.images = af.database.list('/imagesURLs');
   }
 
   ionViewWillEnter() {
@@ -42,7 +41,7 @@ export class BoardPage {
     return this.storageRef.child('/images/'+uid+'/'+id+'.png')
       .putString(this.guestPicture, 'base64', {contentType : 'image/png'})
       .then((savedPicture) => {
-        this.dbRef.push({
+        this.images.push({
           "uid" : uid,
           "userEmail" : userEmail,
           "date" : date,
@@ -80,7 +79,7 @@ export class BoardPage {
       +":" + date.getUTCSeconds();
   }
 
-  showDetailModal() {
+  like(){
 
   }
 

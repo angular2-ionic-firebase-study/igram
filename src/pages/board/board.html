@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Board</ion-title>
+    <ion-title>이미지</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -11,11 +11,11 @@
   <ion-card>
     <hr>
     <ion-grid >
-      <ion-row *ngFor="let board of boards | async">
+      <ion-row *ngFor="let image of images | async">
         <ion-col col-4>
-          <a (click)="showDetailModal(board.id)">
-            <img src="{{board.img}}">
-          </a>
+          <img src="{{image.url}}">
+          <button (click)="like()"><ion-icon ios="ios-heart" md="md-heart"></ion-icon></button>
+          <label>10명이 좋아합니다.</label>
         </ion-col>
       </ion-row>
     </ion-grid>
