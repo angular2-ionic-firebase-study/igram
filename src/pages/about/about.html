@@ -10,9 +10,12 @@
 <ion-content padding>
   <ion-card *ngIf="authorizedData">
     <ion-item>
-      <ion-avatar item-left>
+      <!-- <ion-avatar item-left>
         <img src="{{authorizedData.photoURL}}">
-      </ion-avatar>
+      </ion-avatar> -->
+      <ion-thumbnail item-left>
+        <img src="{{authorizedData.photoURL}}">
+      </ion-thumbnail>
       <h2>{{authorizedData.displayName}}</h2>
       <p>{{authorizedData.email}}
         <button ion-button (click)="signOut()" style="vertical-align: baseline;">
