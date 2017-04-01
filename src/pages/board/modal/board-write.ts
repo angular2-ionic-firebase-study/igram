@@ -25,11 +25,13 @@ export class BoardWritePage {
   write() {
     const user = this._auth.displayName();
     const uid = this._auth.uid();
+    const id = uid+(new Date().getTime());
     const title = this.title || '';
     const content = this.content || '';
 
     this.boards.push({
       'uid':uid,
+      'id':id,
       'user':user,
       'title': title,
       'content': content
