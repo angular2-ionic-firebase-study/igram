@@ -95,9 +95,8 @@ export class BoardPage {
     const uid = this._auth.uid();
 
     return likeMembers
-        .filter(function (likeMember) {
-          return uid === likeMember;
-        }).length !== 0;
+        .filter(likeMember => uid === likeMember)
+        .length !== 0;
   }
 
   like(key, likeMembers) {
@@ -107,9 +106,7 @@ export class BoardPage {
 
   unlike(key, likeMembers) {
     const uid = this._auth.uid();
-    const filteredLikeMembers = likeMembers.filter(function (likeMember) {
-      return uid !== likeMember;
-    });
+    const filteredLikeMembers = likeMembers.filter(likeMember => uid !== likeMember);
 
     this.images.update(key, {likeMembers: filteredLikeMembers.length > 0? filteredLikeMembers: "" });
   }
