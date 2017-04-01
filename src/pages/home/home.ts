@@ -111,7 +111,12 @@ export class HomePage {
   }
 
   drawLikeIcon(likeMembers){
-    return this.isLiked(likeMembers)? 'md-heart' : 'md-heart-outline';
+    return this.isLiked(likeMembers)? 'heart' : 'heart-outline';
+  }
+
+  signOut() {
+    this._auth.signOut();
+    this.navCtrl.push(LoginPage);
   }
 
 }
