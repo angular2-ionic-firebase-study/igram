@@ -110,7 +110,8 @@ export class BoardPage {
     const filteredLikeMembers = likeMembers.filter(function (likeMember) {
       return uid !== likeMember;
     });
-    this.images.update(key, {likeMembers: filteredLikeMembers });
+
+    this.images.update(key, {likeMembers: filteredLikeMembers.length > 0? filteredLikeMembers: "" });
   }
 
   drawLikeIcon(likeMembers){
