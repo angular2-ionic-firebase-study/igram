@@ -10,7 +10,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>login</ion-title>
+    <ion-title>Login</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -20,13 +20,13 @@
     <ion-title><h1>Igram</h1></ion-title>
     <ion-list>
       <ion-item>
-        <ion-label fixed><ion-icon name="contact"></ion-icon> ID : </ion-label>
-        <ion-input type="text" [(ngModel)]="id"></ion-input>
+        <ion-label><ion-icon name="contact"></ion-icon></ion-label>
+        <ion-input type="text" [(ngModel)]="id" placeholder="User email"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label fixed><ion-icon name="lock"></ion-icon> Password : </ion-label>
-        <ion-input type="text" [(ngModel)]="pw"></ion-input>
+        <ion-label><ion-icon name="lock"></ion-icon></ion-label>
+        <ion-input type="password" [(ngModel)]="pw" placeholder="Password"></ion-input>
       </ion-item>
     </ion-list>
     <button ion-button full large (click)="authLogin()">Login</button>

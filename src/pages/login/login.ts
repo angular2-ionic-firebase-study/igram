@@ -25,8 +25,8 @@ export class LoginPage {
     // this.af.auth.subscribe(auth => console.log(auth));
     this.items = af.database.list('/items');
 
-    this.id = "test@abc.com";
-    this.pw = "qwer1234";
+    // this.id = "test@abc.com";
+    // this.pw = "qwer1234";
   }
 
   authLogin() {
