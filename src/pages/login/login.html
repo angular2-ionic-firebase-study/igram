@@ -17,20 +17,23 @@
 
 <ion-content padding>
   <section>
-    <ion-title><h1>Igram</h1></ion-title>
+    <section class="intro">
+      <h2>Igram with Ionic</h2>
+      <h3>Start the game 👾</h3>
+    </section>
+    <!-- <ion-title><h1>Igram</h1></ion-title> -->
     <ion-list>
       <ion-item>
         <ion-label><ion-icon name="contact"></ion-icon></ion-label>
         <ion-input type="text" [(ngModel)]="id" placeholder="User email"></ion-input>
       </ion-item>
-
       <ion-item>
         <ion-label><ion-icon name="lock"></ion-icon></ion-label>
         <ion-input type="password" [(ngModel)]="pw" placeholder="Password"></ion-input>
       </ion-item>
     </ion-list>
-    <button ion-button full large (click)="authLogin()">Login</button>
-    <button ion-button full large icon-left (click)="signInWithFacebook()"><ion-icon name="logo-facebook"></ion-icon>Login</button>
+    <button ion-button full large (click)="authLogin()" class="button-primary">Login</button>
+    <button ion-button full large icon-left (click)="signInWithFacebook()" class="button-fb"><ion-icon name="logo-facebook"></ion-icon>Login</button>
     <!-- <button ion-button full icon-left (click)="signInWithGoogle()"><ion-icon name="logo-google"></ion-icon>Login</button> -->
   </section>
 </ion-content>

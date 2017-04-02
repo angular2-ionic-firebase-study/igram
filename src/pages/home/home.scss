@@ -1,14 +1,14 @@
+$point-color: #fd4a36;
+
 page-home {
 
 }
-
 .card-background-page {
-
   ion-card {
     position: relative;
     text-align: center;
+    box-shadow: 0 20px 20px rgba(0,0,0,.08);
   }
-
   .card-title {
     position: absolute;
     top: 36%;
@@ -17,18 +17,17 @@ page-home {
     font-weight: bold;
     color: #fff;
   }
-
   .card-subtitle {
     display: flex;
     align-items: baseline;
   }
-
-  // .card-subtitle {
-  //   font-size: 1.0em;
-  //   position: absolute;
-  //   top: 52%;
-  //   width: 100%;
-  //   color: #fff;
-  // }
-
+}
+.card-background-page ion-card {
+  text-align: right;
+  .button-clear-md-danger {
+    color: #cccccc;
+    .ion-md-heart {
+      color: $point-color;
+    }
+  }
 }

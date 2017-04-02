@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>iGram</ion-title>
+    <ion-title><img class="nav-logo" src="assets/img/igram.png" alt="logo"></ion-title>
     <ion-buttons end>
       <button ion-button icon-only color="royal" (click)="signOut()">
         <ion-icon name="log-out"></ion-icon>
@@ -13,13 +13,16 @@
 </ion-header>
 
 <ion-content class="card-background-page">
+  <section class="intro">
+    <h2>Igram with Ionic</h2>
+    <h3>Explore the photos you like 😘</h3>
+  </section>
   <ion-card *ngFor="let image of images | async">
     <img src="{{image.url}}">
     <ion-row no-padding>
       <ion-col>
         <button ion-button clear small color="danger" icon-left (click)="clickLikeBtn(image.$key, image.likeMembers)">
-          <ion-icon name="{{drawLikeIcon(image.likeMembers)}}"></ion-icon>
-          {{image.likeMembers.length}}명이 좋아합니다.
+          <ion-icon name="{{drawLikeIcon(image.likeMembers)}}"></ion-icon>{{image.likeMembers.length}}
         </button>
       </ion-col>
     </ion-row>

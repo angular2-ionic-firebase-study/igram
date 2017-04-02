@@ -18,8 +18,8 @@ export class MyApp {
 
   constructor(platform: Platform) {
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Login', component: LoginPage }
+      { title: '🏠Home', component: HomePage },
+      { title: '🚀Login', component: LoginPage }
     ];
 
     platform.ready().then(() => {
