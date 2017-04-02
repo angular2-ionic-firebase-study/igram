@@ -23,12 +23,15 @@ export class AboutPage {
   private takenTime: string;
 
   public imgUrls: FirebaseListObservable<any[]>;
+  private imgNum: number;
 
   constructor(@Inject(FirebaseApp) firebaseApp: any, public af: AngularFire, public navCtrl: NavController, public navParams: NavParams, private _auth: AuthService) {
     this.navCtrl = navCtrl;
     this.storageRef = firebaseApp.storage().ref();
     this.uid = af.auth.getAuth().uid;
     this.imgUrls = af.database.list('/imagesURLs',{ query: { orderByChild: 'uid', equalTo: this.uid} });
+    this.imgNum = 0;
+
     this.displayName = af.auth.getAuth().auth.displayName;
 
     this.base64Image = null;
@@ -38,6 +41,8 @@ export class AboutPage {
     if (this.navParams.get('auth')) {
       this.authorizedData = this.navParams.get('auth').auth;
     }
+
+    this.countUploadedImages();
   }
 
   signOut() {
@@ -97,6 +102,10 @@ export class AboutPage {
   private getDate(): string {
     var date = new Date();
     return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+  }
+
+  private countUploadedImages(): any{
+    return this.imgUrls.map(list => list.length).subscribe(length => this.imgNum = length);
   }
 
 }

@@ -29,7 +29,7 @@
         <ion-item>
           <ion-icon name="logo-instagram" item-left></ion-icon>
           Uploaded Photos
-          <ion-badge item-right>3</ion-badge>
+          <ion-badge item-right>{{imgNum}}</ion-badge>
         </ion-item>
       </ion-row>
       <ion-row *ngFor="let imgUrl of imgUrls | async">
