@@ -82,13 +82,6 @@
     <string/>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string/>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-      <string>fbapi</string>
-      <string>fb-messenger-api</string>
-      <string>fbauth2</string>
-      <string>fbshareextension</string>
-    </array>
     <key>FacebookAppID</key>
     <string>1217565291667170</string>
     <key>FacebookDisplayName</key>
@@ -101,6 +94,13 @@
           <string>fb1217565291667170</string>
         </array>
       </dict>
+    </array>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>fbapi</string>
+      <string>fb-messenger-api</string>
+      <string>fbauth2</string>
+      <string>fbshareextension</string>
     </array>
   </dict>
 </plist>

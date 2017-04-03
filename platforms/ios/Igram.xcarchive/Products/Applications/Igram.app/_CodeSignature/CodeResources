@@ -86,7 +86,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		yCD0gEMUrUW7ed15hfhJMHHv7js=
+		JFEZoihCO75DOxjdH9FY6KBG4ug=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -94,7 +94,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		ksuF0fVf2dpMjVWF6bv+lAMHdmA=
+		flDcgyqekan+vg15wTdadnqLlAo=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -146,7 +146,7 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		4iQ0fDTsqX2LZMhtOgD5l7/zX8Q=
+		7+tSj01u+sjACsu/Qq3PXr+e3/Q=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -158,7 +158,7 @@
 		</data>
 		<key>config.xml</key>
 		<data>
-		k8cJNaB5z7pISH53QmX7nhAOKho=
+		P/5/mVGzX8OxZp/8DMXVCCSFzfs=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
@@ -258,7 +258,7 @@
 		</data>
 		<key>www/build/main.css</key>
 		<data>
-		s97VUZMEWgPEM5CMMtaTxrDuHEY=
+		IApeU8imRxvFJ1yQV/DhHukOe3c=
 		</data>
 		<key>www/build/main.css.map</key>
 		<data>
@@ -266,11 +266,11 @@
 		</data>
 		<key>www/build/main.js</key>
 		<data>
-		XOtGNmBlD6+fNuacJQi7+1vKJYA=
+		La2tGHFOgtvRzaQqd/6NKgQ2V1o=
 		</data>
 		<key>www/build/main.js.map</key>
 		<data>
-		ru6IXagjeGo8FvmpgoTeyyuc1so=
+		61DPeiM/ncdRMhreoWddUOH7Wzo=
 		</data>
 		<key>www/build/polyfills.js</key>
 		<data>
@@ -294,7 +294,7 @@
 		</data>
 		<key>www/cordova_plugins.js</key>
 		<data>
-		iipABGFfX3CK8YluaICKN/mnv44=
+		KoONTeRpJbigqwhaBbTIuJ5GOIY=
 		</data>
 		<key>www/index.html</key>
 		<data>
@@ -667,11 +667,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			yCD0gEMUrUW7ed15hfhJMHHv7js=
+			JFEZoihCO75DOxjdH9FY6KBG4ug=
 			</data>
 			<key>hash2</key>
 			<data>
-			8EytLoX1es4//U+lVGfSmkknHWnk8hLmNB9sUFSD0lY=
+			43hsbbFCR/1Q0mFZRRr8ibO5WXcsxZyvh/wW7Nnt4Mo=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
@@ -689,11 +689,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ksuF0fVf2dpMjVWF6bv+lAMHdmA=
+			flDcgyqekan+vg15wTdadnqLlAo=
 			</data>
 			<key>hash2</key>
 			<data>
-			VNcis3inafJ3xZ1I4lPxKRkinK0Q71FObUdyzu8g3g8=
+			3wc94Xb8Qm03RIv7eTRFCRHYQ2IiV+lvf0poPmFid3A=
 			</data>
 		</dict>
 		<key>LaunchImage-568h@2x.png</key>
@@ -821,11 +821,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4iQ0fDTsqX2LZMhtOgD5l7/zX8Q=
+			7+tSj01u+sjACsu/Qq3PXr+e3/Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			8sU1yRM0TlSID4JxxkoTOOL/lzH0g9GgIWag9a8oSp0=
+			g/mm80KxwrBdDkL2E4s08loEQA46Hi8s5gBtRvCwy0k=
 			</data>
 		</dict>
 		<key>archived-expanded-entitlements.xcent</key>
@@ -843,11 +843,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			k8cJNaB5z7pISH53QmX7nhAOKho=
+			P/5/mVGzX8OxZp/8DMXVCCSFzfs=
 			</data>
 			<key>hash2</key>
 			<data>
-			SbX/E9Z7VnuvlZQ4bAqiRn/00IeQ0Nmh8tl/jWBiu2E=
+			qCmpJSFNi75Y5To1Iz3wf+KZSxwnYqEQzKYh4xgAO7E=
 			</data>
 		</dict>
 		<key>embedded.mobileprovision</key>
@@ -1118,11 +1118,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			s97VUZMEWgPEM5CMMtaTxrDuHEY=
+			IApeU8imRxvFJ1yQV/DhHukOe3c=
 			</data>
 			<key>hash2</key>
 			<data>
-			3Jq0mBUna9XV76sK/GyOFOsRSBRiuU/1q4ACo8JIs0c=
+			/lWKEvGCut9uM2KLHov2Nc8ftx5rL+cNhQRV+VCYQu4=
 			</data>
 		</dict>
 		<key>www/build/main.css.map</key>
@@ -1140,22 +1140,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			XOtGNmBlD6+fNuacJQi7+1vKJYA=
+			La2tGHFOgtvRzaQqd/6NKgQ2V1o=
 			</data>
 			<key>hash2</key>
 			<data>
-			japMBuI+fNAg9xtX4G+o/W9GybbNDu5u2sNQ1d0EazI=
+			kih4I1Xj3i/kOKzICQEJkhAeWik8aBbjKHllTwsVGUs=
 			</data>
 		</dict>
 		<key>www/build/main.js.map</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ru6IXagjeGo8FvmpgoTeyyuc1so=
+			61DPeiM/ncdRMhreoWddUOH7Wzo=
 			</data>
 			<key>hash2</key>
 			<data>
-			N0/tueu0cah3L2/XT6IPVHbuv87gEAdt5KDvsmzbrcA=
+			4WjQrfF8B52Finl45axds22+Wm+La88smIjDzJxcyfE=
 			</data>
 		</dict>
 		<key>www/build/polyfills.js</key>
@@ -1217,11 +1217,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			iipABGFfX3CK8YluaICKN/mnv44=
+			KoONTeRpJbigqwhaBbTIuJ5GOIY=
 			</data>
 			<key>hash2</key>
 			<data>
-			iKz/cCr/voUMj3rLOGTUaumMpItCDz4KuiObFEb6jaw=
+			sEckBW4MdlDL/oGe5hl7YW7YtHsEf8QNubiVvQGGmwQ=
 			</data>
 		</dict>
 		<key>www/index.html</key>

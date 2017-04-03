@@ -7,10 +7,23 @@
         "files": {}
     },
     "installed_plugins": {
+        "cordova-plugin-camera": {
+            "CAMERA_USAGE_DESCRIPTION": " ",
+            "PHOTOLIBRARY_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "com.ionicframework.cutepuppypics378050"
+        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.ionicframework.cutepuppypics378050"
         },
         "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ionicframework.cutepuppypics378050"
+        },
+        "cordova-plugin-facebook4": {
+            "APP_ID": "1217565291667170",
+            "APP_NAME": "ionic2-study",
+            "PACKAGE_NAME": "com.ionicframework.cutepuppypics378050"
+        },
+        "cordova-plugin-file": {
             "PACKAGE_NAME": "com.ionicframework.cutepuppypics378050"
         },
         "cordova-plugin-splashscreen": {
@@ -23,19 +36,6 @@
             "PACKAGE_NAME": "com.ionicframework.cutepuppypics378050"
         },
         "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "com.ionicframework.cutepuppypics378050"
-        },
-        "cordova-plugin-camera": {
-            "CAMERA_USAGE_DESCRIPTION": " ",
-            "PHOTOLIBRARY_USAGE_DESCRIPTION": " ",
-            "PACKAGE_NAME": "com.ionicframework.cutepuppypics378050"
-        },
-        "cordova-plugin-file": {
-            "PACKAGE_NAME": "com.ionicframework.cutepuppypics378050"
-        },
-        "cordova-plugin-facebook4": {
-            "APP_ID": "1217565291667170",
-            "APP_NAME": "ionic2-study",
             "PACKAGE_NAME": "com.ionicframework.cutepuppypics378050"
         }
     },
