@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {ModalController, NavController} from 'ionic-angular';
 
-import {AngularFire, FirebaseApp, FirebaseListObservable} from 'angularfire2';
+import {AngularFire, FirebaseApp, FirebaseListObservable } from 'angularfire2';
 import { AuthService } from '../../providers/auth-service';
 import {LoginPage} from "../login/login";
 import {Camera} from "ionic-native";
@@ -17,24 +17,25 @@ export class HomePage {
   storageRef: any;
   guestPicture: any;
 
-  // images: FirebaseListObservable<any[]>;
-  public images: any;
+  private images: FirebaseListObservable<any[]>;
+  // public images: any;
   private takenTime: string;
 
   constructor(@Inject(FirebaseApp) firebaseApp: any, public modalCtrl: ModalController, public navCtrl: NavController, public af: AngularFire, private _auth: AuthService) {
     this.storageRef = firebaseApp.storage().ref();
-    // this.images = af.database.list('/imagesURLs')
-    this.images = af.database.list('/imagesURLs').map( (arr) => { return arr.reverse(); } );
+    this.images = af.database.list('/imagesURLs')
+    // this.images = af.database.list('/imagesURLs').map( (arr) => { return arr.reverse(); } );
   }
 
-  // ionViewWillEnter() {
-  //   if(!this._auth.authenticated) {
-  //     alert('로그인해야만 이용할 수 있습니다');
-  //     this.navCtrl.push(LoginPage);
-  //   }
-  // }
+  ionViewWillEnter() {
+    if(!this._auth.authenticated) {
+      alert('로그인해야만 이용할 수 있습니다');
+      this.navCtrl.setRoot(LoginPage);
+      // this.navCtrl.popToRoot();
+    }
+  }  
 
-  takePicture(){
+  takePicture() {
     return Camera.getPicture({
       destinationType: Camera.DestinationType.DATA_URL,
       sourceType : Camera.PictureSourceType.CAMERA,

@@ -22,16 +22,15 @@ export class AboutPage {
   public displayName: string;
   private takenTime: string;
 
-  // public imgUrls: FirebaseListObservable<any[]>;
-  public imgUrls: any;
+  public imgUrls: FirebaseListObservable<any[]>;
   private imgNum: number;
 
   constructor(@Inject(FirebaseApp) firebaseApp: any, public af: AngularFire, public navCtrl: NavController, public navParams: NavParams, private _auth: AuthService) {
     this.navCtrl = navCtrl;
     this.storageRef = firebaseApp.storage().ref();
     this.uid = af.auth.getAuth().uid;
-    // this.imgUrls = af.database.list('/imagesURLs',{ query: { orderByChild: 'uid', equalTo: this.uid} });
-    this.imgUrls = af.database.list('/imagesURLs').map( (arr) => { return arr.reverse(); } );
+    this.imgUrls = af.database.list('/imagesURLs',{ query: { orderByChild: 'uid', equalTo: this.uid} });
+    // this.imgUrls = af.database.list('/imagesURLs').map( (arr) => { return arr.reverse(); } );
     this.imgNum = 0;
 
     this.displayName = af.auth.getAuth().auth.displayName;
