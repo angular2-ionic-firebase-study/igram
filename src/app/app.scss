@@ -18,21 +18,32 @@
 // CSS By YOOLOOMOOLOO
 $background: #f8fafb;
 
-.header-md {
+.header {
   border-bottom: 2px solid #e6e6e6;
 }
-.toolbar-title {
+.toolbar-title-md {
   text-align: center;
   .nav-logo {
     height: 35px;
     margin: 8px -43px 0 0;
   }
 }
-.content-md {
+.toolbar-title-ios {
+  font-weight: 500;
+  .nav-logo {
+    height: 35px;
+    margin: 10px 0 0 0;
+  }
+}
+
+.content {
   background: $background;
 }
 ion-header::after {
   background-image: none !important;
+}
+.header-ios .toolbar-background-ios, .footer-ios .toolbar-background-ios {
+  border-style: none;
 }
 
 .toolbar-md-custom .bar-button-default-md {
@@ -55,12 +66,12 @@ section.intro {
   }
 }
 ion-navbar {
-  .toolbar-title {
+  .toolbar-title-md {
     padding-right: 70px;
   }
 }
 .menu-inner {
-  .toolbar-title {
+  .toolbar-title-md {
     padding-right: 12px;
     text-align: left;
   }
@@ -74,6 +85,7 @@ ion-navbar {
     background-color: #3599da;
   }
 }
+
 .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
   border-bottom: 2px solid #ffeac6;
   box-shadow: none;
@@ -81,4 +93,18 @@ ion-navbar {
 .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):last-child {
   box-shadow: none;
   border-bottom: none;
+}
+
+// item item-block item-ios item-input ng-pristine ng-valid ng-touched {
+//   border-bottom: 2px solid #dedede !important;
+// }
+
+.list-ios .item-block .item-inner {
+  border-bottom: 1px solid #dedede;
+}
+.list-ios > .item-block:last-child {
+  border-bottom: 1px solid #dedede;
+}
+.list-ios > .item-block:first-child {
+  border-top: 0px;
 }
