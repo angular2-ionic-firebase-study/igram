@@ -86,7 +86,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		ppqO0QSv21m1csMGdrg0SR05TIk=
+		yCD0gEMUrUW7ed15hfhJMHHv7js=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -94,11 +94,11 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		EJr5VQ6KKHdj8yYJu7oG+7gcHwY=
+		ksuF0fVf2dpMjVWF6bv+lAMHdmA=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		SA/c/WDs6ljvgh9KuCKf0ygK+9o=
+		j0gfQ5JPsxyx8ngztKDKdIaBvG0=
 		</data>
 		<key>LaunchImage-568h@2x.png</key>
 		<data>
@@ -146,7 +146,7 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		SsISHY24zJOZ8kQ0A7V/Po+HONs=
+		4iQ0fDTsqX2LZMhtOgD5l7/zX8Q=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -158,7 +158,7 @@
 		</data>
 		<key>config.xml</key>
 		<data>
-		JcatkbnC0/+1jToc9Eyv6+vH09w=
+		k8cJNaB5z7pISH53QmX7nhAOKho=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
@@ -258,7 +258,7 @@
 		</data>
 		<key>www/build/main.css</key>
 		<data>
-		v40r+eNU4rkwEGIEZg2p5O82B0Y=
+		s97VUZMEWgPEM5CMMtaTxrDuHEY=
 		</data>
 		<key>www/build/main.css.map</key>
 		<data>
@@ -266,11 +266,11 @@
 		</data>
 		<key>www/build/main.js</key>
 		<data>
-		pCbnSP3jVqq3cij2373wxH4x1a4=
+		XOtGNmBlD6+fNuacJQi7+1vKJYA=
 		</data>
 		<key>www/build/main.js.map</key>
 		<data>
-		vxKkcwTP9m6CdCRpggj2/Q+LGKk=
+		ru6IXagjeGo8FvmpgoTeyyuc1so=
 		</data>
 		<key>www/build/polyfills.js</key>
 		<data>
@@ -294,11 +294,11 @@
 		</data>
 		<key>www/cordova_plugins.js</key>
 		<data>
-		9HarddkjlSnEFL8msT2+LMqybw8=
+		iipABGFfX3CK8YluaICKN/mnv44=
 		</data>
 		<key>www/index.html</key>
 		<data>
-		vPy9NpPAzX/ZMNR2t6/w3fXcGRU=
+		pwynvbRYrNzGr0o15k0QKHZQyQQ=
 		</data>
 		<key>www/manifest.json</key>
 		<data>
@@ -667,11 +667,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ppqO0QSv21m1csMGdrg0SR05TIk=
+			yCD0gEMUrUW7ed15hfhJMHHv7js=
 			</data>
 			<key>hash2</key>
 			<data>
-			P4+EJgRicNqL9GHXvwiyVWADj1aHHDAGAaZpU9Vr9Ss=
+			8EytLoX1es4//U+lVGfSmkknHWnk8hLmNB9sUFSD0lY=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
@@ -689,11 +689,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			EJr5VQ6KKHdj8yYJu7oG+7gcHwY=
+			ksuF0fVf2dpMjVWF6bv+lAMHdmA=
 			</data>
 			<key>hash2</key>
 			<data>
-			tgIRfGcQcRjthSLcec19rxowmjfgblcTi7duXTBUx8Y=
+			VNcis3inafJ3xZ1I4lPxKRkinK0Q71FObUdyzu8g3g8=
 			</data>
 		</dict>
 		<key>LaunchImage-568h@2x.png</key>
@@ -821,11 +821,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			SsISHY24zJOZ8kQ0A7V/Po+HONs=
+			4iQ0fDTsqX2LZMhtOgD5l7/zX8Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			4NvTOFFTht59igL20T1Ben3+nGyYW4IFciZQKH6l7l0=
+			8sU1yRM0TlSID4JxxkoTOOL/lzH0g9GgIWag9a8oSp0=
 			</data>
 		</dict>
 		<key>archived-expanded-entitlements.xcent</key>
@@ -843,11 +843,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			JcatkbnC0/+1jToc9Eyv6+vH09w=
+			k8cJNaB5z7pISH53QmX7nhAOKho=
 			</data>
 			<key>hash2</key>
 			<data>
-			Ecmb/MO0bFesHuaS9JYkR0drZfd+GcaHaz7roQg65Vw=
+			SbX/E9Z7VnuvlZQ4bAqiRn/00IeQ0Nmh8tl/jWBiu2E=
 			</data>
 		</dict>
 		<key>embedded.mobileprovision</key>
@@ -1118,11 +1118,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			v40r+eNU4rkwEGIEZg2p5O82B0Y=
+			s97VUZMEWgPEM5CMMtaTxrDuHEY=
 			</data>
 			<key>hash2</key>
 			<data>
-			nwiBGwmHNo9OKQ6O70Ant/teQtn/yBG5Mo5MtZvyMGU=
+			3Jq0mBUna9XV76sK/GyOFOsRSBRiuU/1q4ACo8JIs0c=
 			</data>
 		</dict>
 		<key>www/build/main.css.map</key>
@@ -1140,22 +1140,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			pCbnSP3jVqq3cij2373wxH4x1a4=
+			XOtGNmBlD6+fNuacJQi7+1vKJYA=
 			</data>
 			<key>hash2</key>
 			<data>
-			Xt+QUNo81dYRi3k5nI8NnMX9PXh07LOEHnOUurCjir4=
+			japMBuI+fNAg9xtX4G+o/W9GybbNDu5u2sNQ1d0EazI=
 			</data>
 		</dict>
 		<key>www/build/main.js.map</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			vxKkcwTP9m6CdCRpggj2/Q+LGKk=
+			ru6IXagjeGo8FvmpgoTeyyuc1so=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZwdGobxrId85+/+KPyIllr0cQjzZMjcvhNmZZl4Px38=
+			N0/tueu0cah3L2/XT6IPVHbuv87gEAdt5KDvsmzbrcA=
 			</data>
 		</dict>
 		<key>www/build/polyfills.js</key>
@@ -1217,22 +1217,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			9HarddkjlSnEFL8msT2+LMqybw8=
+			iipABGFfX3CK8YluaICKN/mnv44=
 			</data>
 			<key>hash2</key>
 			<data>
-			Ik2LHbuzrY0eboS57kasHb+TwI/8k6WwwvqlxYNcvxo=
+			iKz/cCr/voUMj3rLOGTUaumMpItCDz4KuiObFEb6jaw=
 			</data>
 		</dict>
 		<key>www/index.html</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			vPy9NpPAzX/ZMNR2t6/w3fXcGRU=
+			pwynvbRYrNzGr0o15k0QKHZQyQQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			CAVIpJoej1eg1PUksNMgU1dAOtp4jpG+Hm82KxdFq+I=
+			MYyz0GcOBJV1ZtocWhtS1e4ams2xWXeRxyJlfxHr+xY=
 			</data>
 		</dict>
 		<key>www/manifest.json</key>

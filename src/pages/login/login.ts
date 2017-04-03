@@ -3,7 +3,7 @@ import { Nav, NavController, NavParams } from 'ionic-angular';
 import { AboutPage } from '../../pages/about/about';
 
 import { AuthService } from '../../providers/auth-service';
-import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 'angularfire2';
+import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 
 /*
   Generated class for the Login page.
@@ -19,11 +19,8 @@ export class LoginPage {
   id : any;
   pw : any;
 
-  items: FirebaseListObservable<any[]>;
-
   constructor(public af: AngularFire, private _auth: AuthService, public navCtrl: NavController, public navParams: NavParams, nav: Nav) {
     // this.af.auth.subscribe(auth => console.log(auth));
-    this.items = af.database.list('/items');
 
     // this.id = "test@abc.com";
     // this.pw = "qwer1234";

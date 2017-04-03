@@ -2,7 +2,7 @@
     "cordova-plugin-whitelist": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-whitelist@1.3.1"
+            "id": "cordova-plugin-whitelist@~1.3.1"
         },
         "is_top_level": true,
         "variables": {}
@@ -10,7 +10,7 @@
     "cordova-plugin-statusbar": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-statusbar@2.2.1"
+            "id": "cordova-plugin-statusbar@~2.2.1"
         },
         "is_top_level": true,
         "variables": {}
@@ -18,7 +18,7 @@
     "cordova-plugin-console": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-console@1.0.5"
+            "id": "cordova-plugin-console@~1.0.5"
         },
         "is_top_level": true,
         "variables": {}
@@ -26,7 +26,7 @@
     "cordova-plugin-device": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-device@1.1.4"
+            "id": "cordova-plugin-device@~1.1.4"
         },
         "is_top_level": true,
         "variables": {}
@@ -50,10 +50,13 @@
     "cordova-plugin-camera": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-camera"
+            "id": "cordova-plugin-camera@~2.3.1"
         },
         "is_top_level": true,
-        "variables": {}
+        "variables": {
+            "CAMERA_USAGE_DESCRIPTION": " ",
+            "PHOTOLIBRARY_USAGE_DESCRIPTION": " "
+        }
     },
     "cordova-plugin-compat": {
         "source": {
@@ -66,7 +69,7 @@
     "cordova-plugin-file": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-file"
+            "id": "cordova-plugin-file@~4.3.2"
         },
         "is_top_level": true,
         "variables": {}
@@ -79,7 +82,7 @@
         "is_top_level": true,
         "variables": {
             "APP_ID": "1217565291667170",
-            "APP_NAME": "igram"
+            "APP_NAME": "ionic2-study"
         }
     }
 }

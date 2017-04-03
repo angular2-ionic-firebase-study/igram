@@ -12,46 +12,27 @@ import {Camera} from "ionic-native";
 })
 export class HomePage {
 
-  images: FirebaseListObservable<any[]>;
+
   base64Image: any;
   storageRef: any;
   guestPicture: any;
+
+  // images: FirebaseListObservable<any[]>;
+  public images: any;
   private takenTime: string;
 
   constructor(@Inject(FirebaseApp) firebaseApp: any, public modalCtrl: ModalController, public navCtrl: NavController, public af: AngularFire, private _auth: AuthService) {
     this.storageRef = firebaseApp.storage().ref();
-    this.images = af.database.list('/imagesURLs');
+    // this.images = af.database.list('/imagesURLs')
+    this.images = af.database.list('/imagesURLs').map( (arr) => { return arr.reverse(); } );
   }
 
-  ionViewWillEnter() {
-    if(!this._auth.authenticated) {
-      alert('로그인해야만 이용할 수 있습니다');
-      this.navCtrl.push(LoginPage);
-    }
-  }
-
-  upload() {
-    const uid = this._auth.uid();
-    const userEmail = this._auth.displayName();
-    const date = new Date();
-    const id = uid+(date.getTime());
-
-    return this.storageRef.child('/images/'+uid+'/'+id+'.png')
-      .putString(this.guestPicture, 'base64', {contentType : 'image/png'})
-      .then((savedPicture) => {
-        this.images.push({
-          "uid" : uid,
-          "userEmail" : userEmail,
-          "date" : date,
-          "likeMembers": "",
-          "url" : savedPicture.downloadURL
-        }).then((success) => {
-          alert("URL uploaded : " + success);
-        }, (error) => {
-          alert("Failed URL upload" + error);
-        });
-      });
-  }
+  // ionViewWillEnter() {
+  //   if(!this._auth.authenticated) {
+  //     alert('로그인해야만 이용할 수 있습니다');
+  //     this.navCtrl.push(LoginPage);
+  //   }
+  // }
 
   takePicture(){
     return Camera.getPicture({
@@ -63,20 +44,56 @@ export class HomePage {
     }).then((imageData) => {
       this.base64Image = "data:image/png;base64," + imageData;
       this.guestPicture = imageData;
-      this.takenTime = this.format(new Date());
-      this.upload();
+      this.takenTime = this.getDate();
+      this.uploadImage();
     }, (err) => {
       alert(err);
     });
   }
 
-  format(date){
-    return date.getUTCFullYear()
-      +"." + (date.getUTCdateonth()+1)
-      +"." + date.getUTCDate()
-      +" " + date.getUTCHours()
-      +":" + date.getUTCdateinutes()
-      +":" + date.getUTCSeconds();
+  selectFromPhotoAlbum() {
+    return Camera.getPicture({
+        destinationType: Camera.DestinationType.DATA_URL,
+        sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
+        encodingType: Camera.EncodingType.PNG,
+        targetWidth: 400,
+        targetHeight: 400
+    }).then((imageData) => {
+      this.base64Image = "data:image/png;base64," + imageData;
+      this.guestPicture = imageData;
+      this.takenTime = this.getDate();
+      this.uploadImage();
+    }, (err) => {
+      alert(err);
+    });
+  }
+
+  uploadImage() {
+    const uid = this._auth.uid();
+    const userEmail = this._auth.displayName();
+    // const date = new Date();
+    // const id = uid+(date.getTime());
+
+    return this.storageRef.child('/images/'+uid+'/'+this.getId()+'.png')
+      .putString(this.guestPicture, 'base64', {contentType : 'image/png'})
+      .then((savedPicture) => {
+        this.images.push({
+          "uid" : uid,
+          "userEmail" : userEmail,
+          "date" : this.takenTime,
+          "likeMembers": "",
+          "url" : savedPicture.downloadURL
+        }).then((success) => {
+          alert("URL uploaded : " + success);
+        }, (error) => {
+          alert("Failed URL upload" + error);
+        });
+      });
+  }
+
+  signOut() {
+    this._auth.signOut();
+    this.navCtrl.push(LoginPage);
   }
 
   clickLikeBtn(key, likeMembers){
@@ -114,9 +131,14 @@ export class HomePage {
     return this.isLiked(likeMembers)? 'heart' : 'heart-outline';
   }
 
-  signOut() {
-    this._auth.signOut();
-    this.navCtrl.push(LoginPage);
+  private getDate(): string {
+    var date = new Date();
+    return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+  }
+
+  private getId(): string {
+    var id = new Date();
+    return id.toISOString().slice(0,10) + id.getHours() + id.getMinutes() + id.getSeconds();
   }
 
 }

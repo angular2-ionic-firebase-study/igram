@@ -22,14 +22,16 @@ export class AboutPage {
   public displayName: string;
   private takenTime: string;
 
-  public imgUrls: FirebaseListObservable<any[]>;
+  // public imgUrls: FirebaseListObservable<any[]>;
+  public imgUrls: any;
   private imgNum: number;
 
   constructor(@Inject(FirebaseApp) firebaseApp: any, public af: AngularFire, public navCtrl: NavController, public navParams: NavParams, private _auth: AuthService) {
     this.navCtrl = navCtrl;
     this.storageRef = firebaseApp.storage().ref();
     this.uid = af.auth.getAuth().uid;
-    this.imgUrls = af.database.list('/imagesURLs',{ query: { orderByChild: 'uid', equalTo: this.uid} });
+    // this.imgUrls = af.database.list('/imagesURLs',{ query: { orderByChild: 'uid', equalTo: this.uid} });
+    this.imgUrls = af.database.list('/imagesURLs').map( (arr) => { return arr.reverse(); } );
     this.imgNum = 0;
 
     this.displayName = af.auth.getAuth().auth.displayName;
@@ -61,6 +63,7 @@ export class AboutPage {
       this.base64Image = "data:image/png;base64," + imageData;
       this.guestPicture = imageData;
       this.takenTime = this.getDate();
+      this.uploadImage();
     }, (err) => {
       alert(err);
     });
@@ -77,13 +80,14 @@ export class AboutPage {
       this.base64Image = "data:image/png;base64," + imageData;
       this.guestPicture = imageData;
       this.takenTime = this.getDate();
+      this.uploadImage();
     }, (err) => {
       alert(err);
     });
   }
 
   uploadImage() {
-    return this.storageRef.child('/images/'+this.uid+'/new_sample.png')
+    return this.storageRef.child('/images/'+this.uid+'/'+this.getId()+'.png')
       .putString(this.guestPicture, 'base64', {contentType : 'image/png'})
       .then((savedPicture) => {
         this.imgUrls.push({
@@ -102,6 +106,11 @@ export class AboutPage {
   private getDate(): string {
     var date = new Date();
     return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+  }
+
+  private getId(): string {
+    var id = new Date();
+    return id.toISOString().slice(0,10) + id.getHours() + id.getMinutes() + id.getSeconds();
   }
 
   private countUploadedImages(): any{

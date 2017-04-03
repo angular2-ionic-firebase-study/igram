@@ -1,5 +1,6 @@
 import { Platform } from 'ionic-angular';
 import { Facebook } from 'ionic-native';
+// import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
@@ -38,6 +39,9 @@ export class AuthService {
         const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
         return firebase.auth().signInWithCredential(facebookCredential);
       });
+      // return this.fb.login(['public_profile', 'user_friends', 'email'])
+      // .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
+      // .catch(e => console.log('Error logging into Facebook', e));
     } else {
       return this.auth$.login({
         provider: AuthProviders.Facebook,
