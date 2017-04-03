@@ -28,3 +28,9 @@ xcuserdata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
+
+## Cordova Plugins
+platforms/
+plugins/
+resources/
+www/lib
