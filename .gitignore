@@ -30,7 +30,7 @@ xcuserdata/
 *.xcscmblueprint
 
 ## Cordova Plugins
-platforms/
-plugins/
-resources/
+platforms
+plugins
+resources
 www/lib
