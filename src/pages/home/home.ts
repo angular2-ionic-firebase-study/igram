@@ -2,7 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {ModalController, NavController} from 'ionic-angular';
 
 import {AngularFire, FirebaseApp, FirebaseListObservable } from 'angularfire2';
-import { AuthService } from '../../providers/auth-service';
+import {AuthService} from '../../providers/auth-service';
 import {LoginPage} from "../login/login";
 import {Camera} from "ionic-native";
 
@@ -17,14 +17,23 @@ export class HomePage {
   storageRef: any;
   guestPicture: any;
 
+  public uid: any;
+  public userEmail: any;
+
   private images: FirebaseListObservable<any[]>;
   // public images: any;
   private takenTime: string;
 
   constructor(@Inject(FirebaseApp) firebaseApp: any, public modalCtrl: ModalController, public navCtrl: NavController, public af: AngularFire, private _auth: AuthService) {
-    this.storageRef = firebaseApp.storage().ref();
-    this.images = af.database.list('/imagesURLs')
     // this.images = af.database.list('/imagesURLs').map( (arr) => { return arr.reverse(); } );
+
+    if (this._auth.authenticated) {
+      this.uid = this._auth.uid();
+      this.userEmail = this._auth.displayName();
+
+      this.storageRef = firebaseApp.storage().ref();
+      this.images = af.database.list('/imagesURLs');
+    }
   }
 
   ionViewWillEnter() {
@@ -33,7 +42,7 @@ export class HomePage {
       this.navCtrl.setRoot(LoginPage);
       // this.navCtrl.popToRoot();
     }
-  }  
+  }
 
   takePicture() {
     return Camera.getPicture({
@@ -70,17 +79,17 @@ export class HomePage {
   }
 
   uploadImage() {
-    const uid = this._auth.uid();
-    const userEmail = this._auth.displayName();
+    // const uid = this._auth.uid();
+    // const userEmail = this._auth.displayName();
     // const date = new Date();
     // const id = uid+(date.getTime());
 
-    return this.storageRef.child('/images/'+uid+'/'+this.getId()+'.png')
+    return this.storageRef.child('/images/'+this.uid+'/'+this.getId()+'.png')
       .putString(this.guestPicture, 'base64', {contentType : 'image/png'})
       .then((savedPicture) => {
         this.images.push({
-          "uid" : uid,
-          "userEmail" : userEmail,
+          "uid" : this.uid,
+          "userEmail" : this.userEmail,
           "date" : this.takenTime,
           "likeMembers": "",
           "url" : savedPicture.downloadURL
@@ -107,23 +116,21 @@ export class HomePage {
 
   isLiked(likeMembers) {
     const newLikeMembers = likeMembers || [];
-    const uid = this._auth.uid();
 
     return newLikeMembers
-        .filter(likeMember => uid === likeMember)
+        .filter(likeMember => this.uid === likeMember)
         .length !== 0;
   }
 
   like(key, likeMembers) {
     const newLikeMembers = likeMembers || [];
-    newLikeMembers.push(this._auth.uid());
+    newLikeMembers.push(this.uid);
     this.images.update(key, {likeMembers: newLikeMembers });
   }
 
   unlike(key, likeMembers) {
     const newLikeMembers = likeMembers || [];
-    const uid = this._auth.uid();
-    const filteredLikeMembers = newLikeMembers.filter(likeMember => uid !== likeMember);
+    const filteredLikeMembers = newLikeMembers.filter(likeMember => this.uid !== likeMember);
 
     this.images.update(key, {likeMembers: filteredLikeMembers.length > 0? filteredLikeMembers: "" });
   }
@@ -133,12 +140,12 @@ export class HomePage {
   }
 
   private getDate(): string {
-    var date = new Date();
+    const date = new Date();
     return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
   }
 
   private getId(): string {
-    var id = new Date();
+    const id = new Date();
     return id.toISOString().slice(0,10) + id.getHours() + id.getMinutes() + id.getSeconds();
   }
 

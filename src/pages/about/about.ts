@@ -4,7 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 
 import { FirebaseApp, AngularFire, FirebaseListObservable } from 'angularfire2';
-import {Camera} from 'ionic-native';
+import { Camera } from 'ionic-native';
 
 @Component({
   selector: 'page-about',
@@ -29,7 +29,8 @@ export class AboutPage {
     this.navCtrl = navCtrl;
     this.storageRef = firebaseApp.storage().ref();
     this.uid = af.auth.getAuth().uid;
-    this.imgUrls = af.database.list('/imagesURLs',{ query: { orderByChild: 'uid', equalTo: this.uid} });
+    // this.imgUrls = af.database.list('/imagesURLs',{ query: { orderByChild: 'uid', equalTo: this.uid} });
+    this.imgUrls = af.database.list('/imagesURLs');
     // this.imgUrls = af.database.list('/imagesURLs').map( (arr) => { return arr.reverse(); } );
     this.imgNum = 0;
 
@@ -47,7 +48,10 @@ export class AboutPage {
   }
 
   signOut() {
-    this._auth.signOut();
+    // this._auth.signOut();
+    // this.navCtrl.pop();
+
+    this.af.auth.logout();
     this.navCtrl.pop();
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Nav, NavController, NavParams } from 'ionic-angular';
+import { Nav, NavController, NavParams , ToastController} from 'ionic-angular';
 import { AboutPage } from '../../pages/about/about';
 
 import { AuthService } from '../../providers/auth-service';
@@ -19,26 +19,29 @@ export class LoginPage {
   id : any;
   pw : any;
 
-  constructor(public af: AngularFire, private _auth: AuthService, public navCtrl: NavController, public navParams: NavParams, nav: Nav) {
+  constructor(public af: AngularFire, private _auth: AuthService, public navCtrl: NavController, public navParams: NavParams, nav: Nav, public toastCtrl: ToastController) {
     // this.af.auth.subscribe(auth => console.log(auth));
-
-    // this.id = "test@abc.com";
-    // this.pw = "qwer1234";
   }
 
   authLogin() {
-    this.af.auth.login({
-      email: this.id,
-      password: this.pw
-    },
-    {
-      provider: AuthProviders.Password,
-      method: AuthMethods.Password,
-    }).then((success) => this.navigateAbout(success))
-    .catch((err) => console.log("login failed", err));
+    if (!this.id) {
+      this.validateLoginToast("id 를 입력하세요");
+    } else if (!this.pw) {
+      this.validateLoginToast("pw 를 입력하세요");
+    } else {
+      this.af.auth.login({
+          email: this.id,
+          password: this.pw
+        },
+        {
+          provider: AuthProviders.Password,
+          method: AuthMethods.Password,
+        }).then((success) => this.navigateAbout(success))
+        .catch((err) => this.validateLoginToast("로그인 실패 - " + err.message));
 
-    this.id = null;
-    this.pw = null;
+      this.id = null;
+      this.pw = null;
+    }
   }
 
   signInWithFacebook(): void {
@@ -65,5 +68,13 @@ export class LoginPage {
       auth : successData
     });
     // this.navCtrl.parent.select(2);
+  }
+
+  validateLoginToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000
+    });
+    toast.present();
   }
 }
