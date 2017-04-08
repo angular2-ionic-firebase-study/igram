@@ -47,13 +47,13 @@ export class LoginPage {
   signInWithFacebook(): void {
     this._auth.signInWithFacebook()
       .then((success) => this.navigateAbout(success))
-      .catch((err) => alert(err));
+      .catch((err) => this.validateLoginToast("Facebook 로그인 실패 - " + err.message));
   }
 
   signInWithGoogle() {
     this._auth.signInWithGoogle()
       .then((success) => this.navigateAbout(success))
-      .catch((err) => alert(err));
+      .catch((err) => this.validateLoginToast("Google 로그인 실패 - " + err.message));
 
     // this.af.auth.login({
     //   provider: AuthProviders.Google,

@@ -3,7 +3,7 @@ import { Component, Inject } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 
-import { FirebaseApp, AngularFire, FirebaseListObservable } from 'angularfire2';
+import { FirebaseRef, FirebaseApp, AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Camera } from 'ionic-native';
 
 @Component({
@@ -25,14 +25,17 @@ export class AboutPage {
   public imgUrls: FirebaseListObservable<any[]>;
   private imgNum: number;
 
-  constructor(@Inject(FirebaseApp) firebaseApp: any, public af: AngularFire, public navCtrl: NavController, public navParams: NavParams, private _auth: AuthService) {
+  constructor(@Inject(FirebaseRef) fb, @Inject(FirebaseApp) firebaseApp: any, public af: AngularFire, public navCtrl: NavController, public navParams: NavParams, private _auth: AuthService) {
     this.navCtrl = navCtrl;
     this.storageRef = firebaseApp.storage().ref();
     this.uid = af.auth.getAuth().uid;
-    // this.imgUrls = af.database.list('/imagesURLs',{ query: { orderByChild: 'uid', equalTo: this.uid} });
-    this.imgUrls = af.database.list('/imagesURLs');
+    this.imgUrls = af.database.list('/imagesURLs', { query: { orderByChild: 'uid', equalTo: this.uid} });
     // this.imgUrls = af.database.list('/imagesURLs').map( (arr) => { return arr.reverse(); } );
     this.imgNum = 0;
+
+    // Firebase Database application - http://blog.angular-university.io/angular-2-firebase/
+    // const roofDBref = fb.database().ref();
+    // roofDBref.child("imagesURLs").on('value', snapshot => console.log(" new db : ", snapshot.val()));
 
     this.displayName = af.auth.getAuth().auth.displayName;
 
